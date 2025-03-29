@@ -21,7 +21,7 @@ namespace Quantum
 			carryable->Player = playerEntity;
 
 			var player = f.Unsafe.GetPointer<Player>(playerEntity);
-			player->IsCarrying = true;
+			player->CurrentlyCarrying = item;
 
 			var phyicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(item);
 			phyicsBody->IsKinematic = true;
@@ -52,7 +52,7 @@ namespace Quantum
 					var phyicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(item);
 					var playerKCC = f.Unsafe.GetPointer<KCC>(playerEntity);
 					var player = f.Unsafe.GetPointer<Player>(playerEntity);
-					player->IsCarrying = false;
+					player->CurrentlyCarrying = EntityRef.None;
 					phyicsBody->IsKinematic = false;
 					phyicsBody->Velocity = playerKCC->RealVelocity;
 					

@@ -1146,28 +1146,32 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Player : Quantum.IComponent {
-    public const Int32 SIZE = 16;
+    public const Int32 SIZE = 32;
     public const Int32 ALIGNMENT = 8;
-    [FieldOffset(8)]
+    [FieldOffset(24)]
     public FP JumpForce;
     [FieldOffset(0)]
     [HideInInspector()]
     public PlayerRef PlayerRef;
-    [FieldOffset(4)]
-    public QBoolean IsCarrying;
+    [FieldOffset(16)]
+    public EntityRef CurrentlyCarrying;
+    [FieldOffset(8)]
+    public EntityRef CurrentStation;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 2621;
         hash = hash * 31 + JumpForce.GetHashCode();
         hash = hash * 31 + PlayerRef.GetHashCode();
-        hash = hash * 31 + IsCarrying.GetHashCode();
+        hash = hash * 31 + CurrentlyCarrying.GetHashCode();
+        hash = hash * 31 + CurrentStation.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (Player*)ptr;
         PlayerRef.Serialize(&p->PlayerRef, serializer);
-        QBoolean.Serialize(&p->IsCarrying, serializer);
+        EntityRef.Serialize(&p->CurrentStation, serializer);
+        EntityRef.Serialize(&p->CurrentlyCarrying, serializer);
         FP.Serialize(&p->JumpForce, serializer);
     }
   }
@@ -1187,6 +1191,32 @@ namespace Quantum {
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (PlayerFields*)ptr;
         PlayerRef.Serialize(&p->Owner, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct Station : Quantum.IComponent {
+    public const Int32 SIZE = 56;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(8)]
+    public FPVector3 PlayerPosition;
+    [FieldOffset(32)]
+    public FPVector3 PlayerRotation;
+    [FieldOffset(0)]
+    public EntityRef Player;
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 4759;
+        hash = hash * 31 + PlayerPosition.GetHashCode();
+        hash = hash * 31 + PlayerRotation.GetHashCode();
+        hash = hash * 31 + Player.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (Station*)ptr;
+        EntityRef.Serialize(&p->Player, serializer);
+        FPVector3.Serialize(&p->PlayerPosition, serializer);
+        FPVector3.Serialize(&p->PlayerRotation, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]
@@ -1251,11 +1281,19 @@ namespace Quantum {
   public unsafe partial interface ISignalOnDrop : ISignal {
     void OnDrop(Frame f, EntityRef Player);
   }
+  public unsafe partial interface ISignalOnPlayerEnterStation : ISignal {
+    void OnPlayerEnterStation(Frame f, EntityRef playerEntity, EntityRef stationEntity);
+  }
+  public unsafe partial interface ISignalOnPlayerLeaveStation : ISignal {
+    void OnPlayerLeaveStation(Frame f, EntityRef playerEntity);
+  }
   public static unsafe partial class Constants {
   }
   public unsafe partial class Frame {
     private ISignalOnCarry[] _ISignalOnCarrySystems;
     private ISignalOnDrop[] _ISignalOnDropSystems;
+    private ISignalOnPlayerEnterStation[] _ISignalOnPlayerEnterStationSystems;
+    private ISignalOnPlayerLeaveStation[] _ISignalOnPlayerLeaveStationSystems;
     partial void AllocGen() {
       _globals = (_globals_*)Context.Allocator.AllocAndClear(sizeof(_globals_));
     }
@@ -1269,6 +1307,8 @@ namespace Quantum {
       Initialize(this, this.SimulationConfig.Entities, 256);
       _ISignalOnCarrySystems = BuildSignalsArray<ISignalOnCarry>();
       _ISignalOnDropSystems = BuildSignalsArray<ISignalOnDrop>();
+      _ISignalOnPlayerEnterStationSystems = BuildSignalsArray<ISignalOnPlayerEnterStation>();
+      _ISignalOnPlayerLeaveStationSystems = BuildSignalsArray<ISignalOnPlayerLeaveStation>();
       _ComponentSignalsOnAdded = new ComponentReactiveCallbackInvoker[ComponentTypeId.Type.Length];
       _ComponentSignalsOnRemoved = new ComponentReactiveCallbackInvoker[ComponentTypeId.Type.Length];
       BuildSignalsArrayOnComponentAdded<Quantum.Carryable>();
@@ -1313,6 +1353,8 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<Quantum.Player>();
       BuildSignalsArrayOnComponentAdded<Quantum.PlayerFields>();
       BuildSignalsArrayOnComponentRemoved<Quantum.PlayerFields>();
+      BuildSignalsArrayOnComponentAdded<Quantum.Station>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.Station>();
       BuildSignalsArrayOnComponentAdded<Quantum.Submarine>();
       BuildSignalsArrayOnComponentRemoved<Quantum.Submarine>();
       BuildSignalsArrayOnComponentAdded<Quantum.TeamLink>();
@@ -1363,6 +1405,24 @@ namespace Quantum {
           var s = array[i];
           if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
             s.OnDrop(_f, Player);
+          }
+        }
+      }
+      public void OnPlayerEnterStation(EntityRef playerEntity, EntityRef stationEntity) {
+        var array = _f._ISignalOnPlayerEnterStationSystems;
+        for (Int32 i = 0; i < array.Length; ++i) {
+          var s = array[i];
+          if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
+            s.OnPlayerEnterStation(_f, playerEntity, stationEntity);
+          }
+        }
+      }
+      public void OnPlayerLeaveStation(EntityRef playerEntity) {
+        var array = _f._ISignalOnPlayerLeaveStationSystems;
+        for (Int32 i = 0; i < array.Length; ++i) {
+          var s = array[i];
+          if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
+            s.OnPlayerLeaveStation(_f, playerEntity);
           }
         }
       }
@@ -1474,6 +1534,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(Shape3D), Shape3D.SIZE);
       typeRegistry.Register(typeof(SpringJoint), SpringJoint.SIZE);
       typeRegistry.Register(typeof(SpringJoint3D), SpringJoint3D.SIZE);
+      typeRegistry.Register(typeof(Quantum.Station), Quantum.Station.SIZE);
       typeRegistry.Register(typeof(Quantum.Submarine), Quantum.Submarine.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamLink), Quantum.TeamLink.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamRef), 4);
@@ -1484,7 +1545,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 8)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 9)
         .AddBuiltInComponents()
         .Add<Quantum.Carryable>(Quantum.Carryable.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Interactable>(Quantum.Interactable.Serialize, null, null, ComponentFlags.None)
@@ -1492,6 +1553,7 @@ namespace Quantum {
         .Add<Quantum.KCCProcessorLink>(Quantum.KCCProcessorLink.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Player>(Quantum.Player.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.PlayerFields>(Quantum.PlayerFields.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.Station>(Quantum.Station.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Submarine>(Quantum.Submarine.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.TeamLink>(Quantum.TeamLink.Serialize, null, null, ComponentFlags.None)
         .Finish();

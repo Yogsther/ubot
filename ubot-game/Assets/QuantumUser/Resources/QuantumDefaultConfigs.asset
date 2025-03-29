@@ -200,6 +200,11 @@ MonoBehaviour:
     SystemName: 
     StartDisabled: 0
     Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.StationSystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
 --- !u!114 &-2078856454735644752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +259,7 @@ MonoBehaviour:
       RawValue: 66
     ShapeCastSoftTolerance:
       RawValue: 3277
-    AllowSleeping: 0
+    AllowSleeping: 1
     SleepTimeSec:
       RawValue: 32768
     LinearSleepTolerance:
@@ -295,6 +300,7 @@ MonoBehaviour:
     - 
     - Water
     - UI
+    - Interactable
     - 
     - 
     - 
@@ -304,8 +310,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
-    - 
+    - LowRes
     - 
     - 
     - 
@@ -400,7 +405,7 @@ MonoBehaviour:
     RawValue: 6554
   MaxContacts: 8
   LayerMask:
-    BitMask: -1
+    BitMask: 65
   UseManifoldNormal: 0
   AirControl: 1
   Acceleration:

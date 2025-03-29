@@ -258,12 +258,12 @@ namespace Quantum.Prototypes {
   }
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.Player))]
-  public unsafe partial class PlayerPrototype : ComponentPrototype<Quantum.Player> {
+  public unsafe class PlayerPrototype : ComponentPrototype<Quantum.Player> {
     public FP JumpForce;
     [HideInInspector()]
     public PlayerRef PlayerRef;
-    public QBoolean IsCarrying;
-    partial void MaterializeUser(Frame frame, ref Quantum.Player result, in PrototypeMaterializationContext context);
+    public MapEntityId CurrentlyCarrying;
+    public MapEntityId CurrentStation;
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.Player component = default;
         Materialize((Frame)f, ref component, in context);
@@ -272,8 +272,8 @@ namespace Quantum.Prototypes {
     public void Materialize(Frame frame, ref Quantum.Player result, in PrototypeMaterializationContext context = default) {
         result.JumpForce = this.JumpForce;
         result.PlayerRef = this.PlayerRef;
-        result.IsCarrying = this.IsCarrying;
-        MaterializeUser(frame, ref result, in context);
+        PrototypeValidator.FindMapEntity(this.CurrentlyCarrying, in context, out result.CurrentlyCarrying);
+        PrototypeValidator.FindMapEntity(this.CurrentStation, in context, out result.CurrentStation);
     }
   }
   [System.SerializableAttribute()]
@@ -333,6 +333,23 @@ namespace Quantum.Prototypes {
           default: PrototypeValidator.UnknownUnionField(_field_used_, in context); break;
         }
         MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.Station))]
+  public unsafe class StationPrototype : ComponentPrototype<Quantum.Station> {
+    public FPVector3 PlayerPosition;
+    public FPVector3 PlayerRotation;
+    public MapEntityId Player;
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.Station component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.Station result, in PrototypeMaterializationContext context = default) {
+        result.PlayerPosition = this.PlayerPosition;
+        result.PlayerRotation = this.PlayerRotation;
+        PrototypeValidator.FindMapEntity(this.Player, in context, out result.Player);
     }
   }
   [System.SerializableAttribute()]

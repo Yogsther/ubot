@@ -31,6 +31,12 @@ public class PlayerGizmos : MonoBehaviour
 		return transform.Rotation * inputRotation;
 	}
 
+	public static FPQuaternion RelativeToWorldRotation(FPVector3 eulerRotation, Transform transform)
+	{
+		FPQuaternion inputRotation = FPQuaternion.Euler(eulerRotation);
+		return transform.rotation.ToFPQuaternion() * inputRotation;
+	}
+
 	public static FPVector3 RelativeToWorld( FPVector3 position, Transform transform)
 	{
 		return (transform.position.ToFPVector3() + (transform.rotation.ToFPQuaternion() * (position) - transform.position.ToFPVector3())) + transform.position.ToFPVector3();

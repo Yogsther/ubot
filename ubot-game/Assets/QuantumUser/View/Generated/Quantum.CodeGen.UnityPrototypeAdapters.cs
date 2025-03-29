@@ -116,6 +116,39 @@ namespace Quantum.Prototypes.Unity {
       return result;
     }
   }
+  [System.SerializableAttribute()]
+  public unsafe partial class PlayerPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.PlayerPrototype> {
+    public FP JumpForce;
+    [HideInInspector()]
+    public PlayerRef PlayerRef;
+    public Quantum.QuantumEntityPrototype CurrentlyCarrying;
+    public Quantum.QuantumEntityPrototype CurrentStation;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.PlayerPrototype prototype);
+    public override Quantum.Prototypes.PlayerPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.PlayerPrototype();
+      converter.Convert(this.JumpForce, out result.JumpForce);
+      converter.Convert(this.PlayerRef, out result.PlayerRef);
+      converter.Convert(this.CurrentlyCarrying, out result.CurrentlyCarrying);
+      converter.Convert(this.CurrentStation, out result.CurrentStation);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  public unsafe partial class StationPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.StationPrototype> {
+    public FPVector3 PlayerPosition;
+    public FPVector3 PlayerRotation;
+    public Quantum.QuantumEntityPrototype Player;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.StationPrototype prototype);
+    public override Quantum.Prototypes.StationPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.StationPrototype();
+      converter.Convert(this.PlayerPosition, out result.PlayerPosition);
+      converter.Convert(this.PlayerRotation, out result.PlayerRotation);
+      converter.Convert(this.Player, out result.Player);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
 }
 #pragma warning restore 0109
 #pragma warning restore 1591

@@ -1,0 +1,8 @@
+component Station {
+	FPVector3 PlayerPosition;
+	FPVector3 PlayerRotation;
+	EntityRef Player;
+}
+
+signal OnPlayerEnterStation(EntityRef playerEntity, EntityRef stationEntity);
+signal OnPlayerLeaveStation(EntityRef playerEntity);
