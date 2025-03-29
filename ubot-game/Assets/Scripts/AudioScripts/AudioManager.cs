@@ -74,6 +74,7 @@ public class AudioManager : MonoBehaviour
     private void InititializeSubmarineAmbience(EventReference submarineAmbienceEventReference)
     {
         submarineAmbienceEventInstance = CreateInstance(submarineAmbienceEventReference);
+        submarineAmbienceEventInstance.start();
         //submarineAmbienceEventInstance.start();
     }
 
