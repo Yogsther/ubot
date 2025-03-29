@@ -4,5 +4,10 @@ component Station {
 	EntityRef Player;
 }
 
+component SteerStation{
+	FP Steering;
+	FP SteeringSpeed;
+}
+
 signal OnPlayerEnterStation(EntityRef playerEntity, EntityRef stationEntity);
 signal OnPlayerLeaveStation(EntityRef playerEntity);

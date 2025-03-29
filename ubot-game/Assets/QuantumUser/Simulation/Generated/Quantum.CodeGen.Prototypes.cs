@@ -353,6 +353,23 @@ namespace Quantum.Prototypes {
     }
   }
   [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.SteerStation))]
+  public unsafe partial class SteerStationPrototype : ComponentPrototype<Quantum.SteerStation> {
+    public FP Steering;
+    public FP SteeringSpeed;
+    partial void MaterializeUser(Frame frame, ref Quantum.SteerStation result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.SteerStation component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.SteerStation result, in PrototypeMaterializationContext context = default) {
+        result.Steering = this.Steering;
+        result.SteeringSpeed = this.SteeringSpeed;
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.Submarine))]
   public unsafe partial class SubmarinePrototype : ComponentPrototype<Quantum.Submarine> {
     [Header("Stats")]

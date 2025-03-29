@@ -1220,6 +1220,28 @@ namespace Quantum {
     }
   }
   [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct SteerStation : Quantum.IComponent {
+    public const Int32 SIZE = 16;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(0)]
+    public FP Steering;
+    [FieldOffset(8)]
+    public FP SteeringSpeed;
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 15797;
+        hash = hash * 31 + Steering.GetHashCode();
+        hash = hash * 31 + SteeringSpeed.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (SteerStation*)ptr;
+        FP.Serialize(&p->Steering, serializer);
+        FP.Serialize(&p->SteeringSpeed, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Submarine : Quantum.IComponent {
     public const Int32 SIZE = 40;
     public const Int32 ALIGNMENT = 8;
@@ -1355,6 +1377,8 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<Quantum.PlayerFields>();
       BuildSignalsArrayOnComponentAdded<Quantum.Station>();
       BuildSignalsArrayOnComponentRemoved<Quantum.Station>();
+      BuildSignalsArrayOnComponentAdded<Quantum.SteerStation>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.SteerStation>();
       BuildSignalsArrayOnComponentAdded<Quantum.Submarine>();
       BuildSignalsArrayOnComponentRemoved<Quantum.Submarine>();
       BuildSignalsArrayOnComponentAdded<Quantum.TeamLink>();
@@ -1535,6 +1559,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(SpringJoint), SpringJoint.SIZE);
       typeRegistry.Register(typeof(SpringJoint3D), SpringJoint3D.SIZE);
       typeRegistry.Register(typeof(Quantum.Station), Quantum.Station.SIZE);
+      typeRegistry.Register(typeof(Quantum.SteerStation), Quantum.SteerStation.SIZE);
       typeRegistry.Register(typeof(Quantum.Submarine), Quantum.Submarine.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamLink), Quantum.TeamLink.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamRef), 4);
@@ -1545,7 +1570,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 9)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 10)
         .AddBuiltInComponents()
         .Add<Quantum.Carryable>(Quantum.Carryable.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Interactable>(Quantum.Interactable.Serialize, null, null, ComponentFlags.None)
@@ -1554,6 +1579,7 @@ namespace Quantum {
         .Add<Quantum.Player>(Quantum.Player.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.PlayerFields>(Quantum.PlayerFields.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Station>(Quantum.Station.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.SteerStation>(Quantum.SteerStation.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Submarine>(Quantum.Submarine.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.TeamLink>(Quantum.TeamLink.Serialize, null, null, ComponentFlags.None)
         .Finish();

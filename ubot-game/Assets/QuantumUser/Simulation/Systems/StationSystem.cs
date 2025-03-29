@@ -1,5 +1,6 @@
 namespace Quantum
 {
+	using Photon.Deterministic;
 	using UnityEngine.Scripting;
 
 	[Preserve]
@@ -38,6 +39,16 @@ namespace Quantum
 			if(filter.Station->Player.IsValid)
 			{
 				TrackPlayerToStation(f, filter.Entity);
+
+				var player = f.Unsafe.GetPointer<Player>(filter.Station->Player);
+				BasePlayerInput input = *f.GetPlayerInput(player->PlayerRef);
+
+				if(f.Unsafe.TryGetPointer<SteerStation>(filter.Entity, out SteerStation* steerStation))
+				{
+					var moveDirection = input.MoveDirection.XOY;
+					steerStation->Steering += moveDirection.X * steerStation->SteeringSpeed * f.DeltaTime;
+					steerStation->Steering = FPMath.Clamp(steerStation->Steering, -1, 1);
+				}
 			}
 		}
 
