@@ -8,37 +8,26 @@ namespace Quantum
 	{
 		public void OnCarry(Frame f, EntityRef item, EntityRef playerEntity)
 		{
-			if (IsPlayerAlreadyCarrying(f, playerEntity))
-				return;
+
+			var player = f.Unsafe.GetPointer<Player>(playerEntity);
+
+			if (player->CurrentlyCarrying.IsValid) return;
+			if (player->CurrentStation.IsValid) return;
 
 			var carryable = f.Unsafe.GetPointer<Carryable>(item);
 
-			if(carryable->Player != EntityRef.None)
+			if (carryable->Player != EntityRef.None)
 			{
 				OnDrop(f, carryable->Player);
 			}
 
 			carryable->Player = playerEntity;
 
-			var player = f.Unsafe.GetPointer<Player>(playerEntity);
 			player->CurrentlyCarrying = item;
 
 			var phyicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(item);
 			phyicsBody->IsKinematic = true;
 			phyicsBody->Velocity = FPVector3.Zero;
-		}
-
-		public bool IsPlayerAlreadyCarrying(Frame f, EntityRef player)
-		{
-			var filter = f.Filter<Carryable>();
-			while (filter.NextUnsafe(out EntityRef item, out Carryable* carryable))
-			{
-				if (carryable->Player == player)
-				{
-					return true;
-				}
-			}
-			return false;
 		}
 
 		public void OnDrop(Frame f, EntityRef playerEntity)
@@ -55,7 +44,7 @@ namespace Quantum
 					player->CurrentlyCarrying = EntityRef.None;
 					phyicsBody->IsKinematic = false;
 					phyicsBody->Velocity = playerKCC->RealVelocity;
-					
+
 				}
 			}
 		}

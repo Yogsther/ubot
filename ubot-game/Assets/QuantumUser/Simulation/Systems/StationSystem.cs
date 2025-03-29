@@ -10,6 +10,7 @@ namespace Quantum
 			var player = f.Unsafe.GetPointer<Player>(playerEntity);
 			var station = f.Unsafe.GetPointer<Station>(stationEntity);
 
+			if(player->CurrentlyCarrying.IsValid) return;
 			if (player->CurrentStation.IsValid) return;
 			if (station->Player.IsValid) return;
 
@@ -42,7 +43,6 @@ namespace Quantum
 
 		public void TrackPlayerToStation(Frame f, EntityRef stationEntity)
 		{
-			Log.Debug("Trakcing to station");
 			var station = f.Unsafe.GetPointer<Station>(stationEntity);
 			var player = f.Unsafe.GetPointer<Player>(station->Player);
 
