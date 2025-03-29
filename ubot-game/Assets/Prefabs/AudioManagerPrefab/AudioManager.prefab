@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2611001127758080142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4311006863898905480}
+  - component: {fileID: 3392227345770524664}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4311006863898905480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611001127758080142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6027135460763467181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3392227345770524664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611001127758080142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56f02577ac8f484aad57fe4e7dbd546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Walk>k__BackingField:
+    Guid:
+      Data1: 1512831374
+      Data2: 1135411399
+      Data3: 1618759304
+      Data4: -1963231582
+    Path: event:/SFX/Player/Walk
+  <Run>k__BackingField:
+    Guid:
+      Data1: -743246966
+      Data2: 1203178111
+      Data3: 2114614928
+      Data4: -2001305977
+    Path: event:/SFX/Player/Run
+  <ObjectInWorld>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <NeutralClick>k__BackingField:
+    Guid:
+      Data1: 1954960565
+      Data2: 1234465985
+      Data3: 731749260
+      Data4: 1450364232
+    Path: event:/SFX/UI/NeutralClick
+  <PositiveClick>k__BackingField:
+    Guid:
+      Data1: 1591527466
+      Data2: 1259915922
+      Data3: -1697277534
+      Data4: 1299326320
+    Path: event:/SFX/UI/PositiveClick
+  <NegativeClick>k__BackingField:
+    Guid:
+      Data1: 1693227874
+      Data2: 1216124347
+      Data3: 854606215
+      Data4: -1320339131
+    Path: event:/SFX/UI/NegativeClick 3
+  <submarineAmbience>k__BackingField:
+    Guid:
+      Data1: -1796220648
+      Data2: 1116156547
+      Data3: 1352031391
+      Data4: 2014750711
+    Path: event:/Ambience/submarineAmbience
+--- !u!1 &7495239564497341018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6027135460763467181}
+  - component: {fileID: 8988616339229797560}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6027135460763467181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495239564497341018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4311006863898905480}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8988616339229797560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495239564497341018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe25c2b69cbd42408ed63b21ae93fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
