@@ -1,4 +1,10 @@
 
+global
+{
+    Transform3D AttackerSpawnPoint;
+    Transform3D DefenderSpawnPoint;
+}
+
 
 enum TeamRef
 {

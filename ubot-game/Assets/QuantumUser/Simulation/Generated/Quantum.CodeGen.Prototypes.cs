@@ -354,6 +354,21 @@ namespace Quantum.Prototypes {
     }
   }
   [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.SubmarineInterior))]
+  public unsafe partial class SubmarineInteriorPrototype : ComponentPrototype<Quantum.SubmarineInterior> {
+    [HideInInspector()]
+    public Int32 _empty_prototype_dummy_field_;
+    partial void MaterializeUser(Frame frame, ref Quantum.SubmarineInterior result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.SubmarineInterior component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.SubmarineInterior result, in PrototypeMaterializationContext context = default) {
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.TeamLink))]
   public unsafe partial class TeamLinkPrototype : ComponentPrototype<Quantum.TeamLink> {
     public Quantum.QEnum32<TeamRef> Team;

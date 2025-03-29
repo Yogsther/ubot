@@ -18,6 +18,20 @@ namespace Quantum
 			var playerEntity = f.Create(f.Config.PlayerPrototype);
 			var fields = f.Unsafe.GetPointer<Player>(playerEntity);
 			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
+			var transform = f.Unsafe.GetPointer<Transform3D>(playerEntity);
+
+			TeamRef playerTeam = TeamRef.Defender; //f.GetPlayerData(player).Team;
+
+			TeamLink teamLink = new TeamLink();
+			teamLink.Team = playerTeam;
+
+			f.Add(playerEntity, teamLink);
+
+			var spawnPosition = playerTeam == TeamRef.Attacker ? f.Global->AttackerSpawnPoint.Position : f.Global->DefenderSpawnPoint.Position;
+
+			Debug.Log(spawnPosition);
+
+			kcc->Teleport(f, spawnPosition);
 
 			fields->PlayerRef = player;
 		}

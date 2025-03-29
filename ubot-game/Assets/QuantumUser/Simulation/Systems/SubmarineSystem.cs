@@ -6,7 +6,28 @@ namespace Quantum
     [Preserve]
     public unsafe class SubmarineSystem : SystemMainThreadFilter<SubmarineSystem.Filter>
     {
-        public override void Update(Frame f, ref Filter filter)
+
+		public override void OnInit(Frame f)
+		{
+			var interiors = f.Filter<SubmarineInterior>();
+
+			while (interiors.Next(out var entity, out var component))
+			{
+				if (f.Unsafe.TryGetPointer(entity, out Transform3D* transform) && f.Unsafe.TryGetPointer(entity, out TeamLink* teamLink))
+				{
+					if (teamLink->Team == TeamRef.Attacker)
+					{
+						f.Global->AttackerSpawnPoint = Transform3D.Create(transform->Position);
+					}
+					else
+					{
+						f.Global->DefenderSpawnPoint = Transform3D.Create(transform->Position);
+					}
+				}
+			}
+		}
+
+		public override void Update(Frame f, ref Filter filter)
         {
             filter.Submarine->Throttle = 1;
 

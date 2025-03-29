@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5231825447704967375}
   - component: {fileID: 2730416534462408710}
   - component: {fileID: 4078791980594072494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1426229772106177059}
   - component: {fileID: 7584665270231886969}
   - component: {fileID: 1259196812510106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 2217379995645672501}
   - component: {fileID: 7791924494792347235}
   - component: {fileID: 6885814507559840223}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3668388774922827911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 9163190020698115839}
   - component: {fileID: 4235437889707184600}
   - component: {fileID: 3042390014052774999}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4929145564883648523}
   - component: {fileID: 7502097400613874558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: bcb4a306e68c29c4b918aeecc4259f6a, type: 2}
   m_TargetDisplay: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 6382003901179689220}
   - component: {fileID: 3502456189227591093}
   - component: {fileID: 4282943654787284028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 3297649831491007137}
   - component: {fileID: 4554208777628171754}
   - component: {fileID: 7158908957540296035}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Submarine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ MonoBehaviour:
       IsPersistent: 1
       CompoundShapes: []
     LayerSource: 0
-    Layer: 0
+    Layer: 9
     CallbackFlags:
       Value: 0
   PhysicsBody:
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 5635407073089045751}
   - component: {fileID: 601909189696873787}
   - component: {fileID: 7446363312293752347}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
