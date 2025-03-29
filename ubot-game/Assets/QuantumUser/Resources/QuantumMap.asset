@@ -43,24 +43,24 @@ MonoBehaviour:
   StaticColliders3D:
   - Rotation:
       X:
-        RawValue: 0
+        RawValue: -46340
       Y:
         RawValue: 0
       Z:
         RawValue: 0
       W:
-        RawValue: 65536
+        RawValue: 46340
     Position:
       X:
         RawValue: 0
       Y:
-        RawValue: -75366
+        RawValue: -81920
       Z:
         RawValue: 0
     PhysicsMaterial:
       Id:
         Value: 0
-    ShapeType: 2
+    ShapeType: 4
     SphereRadius:
       RawValue: 0
     CapsuleRadius:
@@ -69,14 +69,14 @@ MonoBehaviour:
       RawValue: 0
     BoxExtents:
       X:
-        RawValue: 284385
+        RawValue: 0
       Y:
-        RawValue: 2851
+        RawValue: 0
       Z:
-        RawValue: 353971
+        RawValue: 0
     SmoothSphereMeshCollisions: 0
     StaticData:
-      Name: Ground
+      Name: MeshStaticCollider
       Tag: Untagged
       Layer: 0
       Asset:
@@ -85,8 +85,52 @@ MonoBehaviour:
       IsTrigger: 0
       ColliderIndex: 0
       MutableMode: 0
+  - Rotation:
+      X:
+        RawValue: -46340
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: 0
+      W:
+        RawValue: 46340
+    Position:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: -81920
+      Z:
+        RawValue: 0
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    ShapeType: 4
+    SphereRadius:
+      RawValue: 0
+    CapsuleRadius:
+      RawValue: 0
+    CapsuleHeight:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: 0
+    SmoothSphereMeshCollisions: 0
+    StaticData:
+      Name: MeshStaticCollider (1)
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 1
+      MutableMode: 0
   MapEntities: []
-  SerializedTriangleDataUncompressedSize: 8
+  SerializedTriangleDataUncompressedSize: 632792
   references:
     version: 2
     RefIds: []

@@ -24,7 +24,7 @@ MonoBehaviour:
     X:
       RawValue: 0
     Y:
-      RawValue: 0
+      RawValue: -1310720
     Z:
       RawValue: 0
   MaxGroundAngle:
