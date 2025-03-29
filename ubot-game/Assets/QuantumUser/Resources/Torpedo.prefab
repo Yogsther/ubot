@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5750606786121644737}
   - component: {fileID: 1598423045611014769}
   - component: {fileID: 3968229971927541043}
+  - component: {fileID: 3496779619496736495}
+  - component: {fileID: 8431702859018435098}
   m_Layer: 6
   m_Name: Torpedo
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012124816839374536}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37401557, y: -0, z: -0, w: 0.92742246}
+  m_LocalRotation: {x: 0.37401587, y: 0, z: 0, w: 0.92742234}
   m_LocalPosition: {x: 0, y: 0.64, z: -2.75}
   m_LocalScale: {x: 0.51917, y: 0.51917, z: 0.51917}
   m_ConstrainProportionsScale: 0
@@ -354,6 +356,48 @@ MonoBehaviour:
   OnEntityDestroyed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3496779619496736495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012124816839374536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd35e653421167145aadc7f4e36d1a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prototype:
+    Player: {fileID: 0}
+    PositionOffset:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 43385
+      Z:
+        RawValue: 24183
+    RotationOffset:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: -4538630
+--- !u!114 &8431702859018435098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012124816839374536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518be5ec2ed3f2f44861188c96888dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prototype:
+    _empty_prototype_dummy_field_: 0
 --- !u!1001 &5032042340351536087
 PrefabInstance:
   m_ObjectHideFlags: 0
