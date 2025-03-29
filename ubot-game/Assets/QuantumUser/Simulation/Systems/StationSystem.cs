@@ -60,6 +60,14 @@ namespace Quantum
 					steerStation->Steering = FPMath.Clamp(steerStation->Steering, -1, 1);
 					submarine->Steering = steerStation->Steering;
 				}
+
+				if(f.Unsafe.TryGetPointer(filter.Entity, out ThrustStation* thrustStation))
+				{
+					var moveDirection = input.MoveDirection.XOY;
+					thrustStation->Throttle += moveDirection.Y * thrustStation->ThrottleSpeed * f.DeltaTime;
+					thrustStation->Throttle = FPMath.Clamp(thrustStation->Throttle, -1, 1);
+					submarine->Throttle = thrustStation->Throttle;
+				}
 			}
 		}
 

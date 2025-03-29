@@ -264,7 +264,7 @@ MonoBehaviour:
       RawValue: 66
     ShapeCastSoftTolerance:
       RawValue: 3277
-    AllowSleeping: 1
+    AllowSleeping: 0
     SleepTimeSec:
       RawValue: 32768
     LinearSleepTolerance:

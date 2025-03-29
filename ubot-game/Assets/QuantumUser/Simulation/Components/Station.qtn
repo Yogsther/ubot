@@ -10,5 +10,10 @@ component SteerStation{
 	FP SteeringSpeed;
 }
 
+component ThrustStation {
+	FP Throttle;
+	FP ThrottleSpeed;
+}
+
 signal OnPlayerEnterStation(EntityRef playerEntity, EntityRef stationEntity);
 signal OnPlayerLeaveStation(EntityRef playerEntity);
