@@ -54,7 +54,7 @@ MonoBehaviour:
       X:
         RawValue: 0
       Y:
-        RawValue: 0
+        RawValue: -75366
       Z:
         RawValue: 0
     PhysicsMaterial:
@@ -69,11 +69,11 @@ MonoBehaviour:
       RawValue: 0
     BoxExtents:
       X:
-        RawValue: 60201
+        RawValue: 284385
       Y:
         RawValue: 2851
       Z:
-        RawValue: 116392
+        RawValue: 353971
     SmoothSphereMeshCollisions: 0
     StaticData:
       Name: Ground

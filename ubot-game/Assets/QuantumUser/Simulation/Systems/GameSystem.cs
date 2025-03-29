@@ -13,8 +13,14 @@ namespace Quantum
 
 		public void OnPlayerAdded(Frame f, PlayerRef player, bool firstTime)
 		{
-			Log.Debug("Player added!");
+			var playerEntity = f.Create(f.Config.PlayerPrototype);
 
+			PlayerFields fields = new PlayerFields()
+			{
+				Owner = player,
+			};
+
+			f.Add(playerEntity, fields);
 		}
 
 		public override void Update(Frame f)
