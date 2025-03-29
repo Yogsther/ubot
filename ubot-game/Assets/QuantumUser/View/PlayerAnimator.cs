@@ -21,8 +21,10 @@ public class PlayerAnimator : QuantumEntityViewComponent<SceneContext>
 			speed = -speed;
 		}
 
+		if (player.CurrentStation.IsValid) speed = 0;
+
 		animator.SetFloat("Speed", speed);
-		animator.SetBool("Carrying", player.CurrentlyCarrying.IsValid);
+		animator.SetBool("Carrying", player.CurrentlyCarrying.IsValid || player.CurrentStation.IsValid);
 	}
 
 }
