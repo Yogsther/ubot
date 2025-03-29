@@ -1,18 +1,30 @@
-component Station {
+component Station 
+{
 	FPVector3 PlayerPosition;
 	FPVector3 PlayerRotation;
 	EntityRef Player;
 	EntityRef Room;
 }
 
-component SteerStation{
+component SteerStation
+{
 	FP Steering;
 	FP SteeringSpeed;
 }
 
-component ThrustStation {
+component ThrustStation 
+{
 	FP Throttle;
 	FP ThrottleSpeed;
+}
+
+component TerminalStation{
+}
+
+event OnTerminalInput
+{
+	EntityRef terminal;
+	String text;
 }
 
 signal OnPlayerEnterStation(EntityRef playerEntity, EntityRef stationEntity);

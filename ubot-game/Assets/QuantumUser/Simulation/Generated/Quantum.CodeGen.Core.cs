@@ -541,12 +541,14 @@ namespace Quantum {
     public FPVector2 MoveDirection;
     [FieldOffset(40)]
     public FPVector2 LookRotationDelta;
-    [FieldOffset(12)]
+    [FieldOffset(16)]
     public Button Jump;
-    [FieldOffset(0)]
+    [FieldOffset(4)]
     public Button Interact;
-    [FieldOffset(24)]
+    [FieldOffset(28)]
     public Button SecondInteract;
+    [FieldOffset(0)]
+    public Int32 TextInput;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 463;
@@ -555,11 +557,13 @@ namespace Quantum {
         hash = hash * 31 + Jump.GetHashCode();
         hash = hash * 31 + Interact.GetHashCode();
         hash = hash * 31 + SecondInteract.GetHashCode();
+        hash = hash * 31 + TextInput.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (BasePlayerInput*)ptr;
+        serializer.Stream.Serialize(&p->TextInput);
         Button.Serialize(&p->Interact, serializer);
         Button.Serialize(&p->Jump, serializer);
         Button.Serialize(&p->SecondInteract, serializer);
@@ -571,12 +575,14 @@ namespace Quantum {
   public unsafe partial struct Input {
     public const Int32 SIZE = 64;
     public const Int32 ALIGNMENT = 8;
-    [FieldOffset(0)]
+    [FieldOffset(4)]
     public Button Interact;
-    [FieldOffset(24)]
+    [FieldOffset(28)]
     public Button SecondInteract;
-    [FieldOffset(12)]
+    [FieldOffset(16)]
     public Button Jump;
+    [FieldOffset(0)]
+    public Int32 TextInput;
     [FieldOffset(40)]
     public QuantumThumbSticks ThumbSticks;
     public override Int32 GetHashCode() {
@@ -585,6 +591,7 @@ namespace Quantum {
         hash = hash * 31 + Interact.GetHashCode();
         hash = hash * 31 + SecondInteract.GetHashCode();
         hash = hash * 31 + Jump.GetHashCode();
+        hash = hash * 31 + TextInput.GetHashCode();
         hash = hash * 31 + ThumbSticks.GetHashCode();
         return hash;
       }
@@ -610,6 +617,7 @@ namespace Quantum {
     }
     static partial void SerializeCodeGen(void* ptr, FrameSerializer serializer) {
         var p = (Input*)ptr;
+        serializer.Stream.Serialize(&p->TextInput);
         Button.Serialize(&p->Interact, serializer);
         Button.Serialize(&p->Jump, serializer);
         Button.Serialize(&p->SecondInteract, serializer);
@@ -1326,6 +1334,22 @@ namespace Quantum {
     }
   }
   [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct TerminalStation : Quantum.IComponent {
+    public const Int32 SIZE = 4;
+    public const Int32 ALIGNMENT = 4;
+    [FieldOffset(0)]
+    private fixed Byte _alignment_padding_[4];
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 14939;
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (TerminalStation*)ptr;
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct ThrustStation : Quantum.IComponent {
     public const Int32 SIZE = 16;
     public const Int32 ALIGNMENT = 8;
@@ -1435,6 +1459,8 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<Quantum.SubmarineInterior>();
       BuildSignalsArrayOnComponentAdded<Quantum.TeamLink>();
       BuildSignalsArrayOnComponentRemoved<Quantum.TeamLink>();
+      BuildSignalsArrayOnComponentAdded<Quantum.TerminalStation>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.TerminalStation>();
       BuildSignalsArrayOnComponentAdded<Quantum.ThrustStation>();
       BuildSignalsArrayOnComponentRemoved<Quantum.ThrustStation>();
       BuildSignalsArrayOnComponentAdded<Transform2D>();
@@ -1452,6 +1478,7 @@ namespace Quantum {
       i->Interact = i->Interact.Update(this.Number, input.Interact);
       i->SecondInteract = i->SecondInteract.Update(this.Number, input.SecondInteract);
       i->Jump = i->Jump.Update(this.Number, input.Jump);
+      i->TextInput = input.TextInput;
       i->ThumbSticks = input.ThumbSticks;
     }
     public Input* GetPlayerInput(PlayerRef player) {
@@ -1618,6 +1645,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum.SubmarineInterior), Quantum.SubmarineInterior.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamLink), Quantum.TeamLink.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamRef), 4);
+      typeRegistry.Register(typeof(Quantum.TerminalStation), Quantum.TerminalStation.SIZE);
       typeRegistry.Register(typeof(Quantum.ThrustStation), Quantum.ThrustStation.SIZE);
       typeRegistry.Register(typeof(Transform2D), Transform2D.SIZE);
       typeRegistry.Register(typeof(Transform2DVertical), Transform2DVertical.SIZE);
@@ -1626,7 +1654,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 12)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 13)
         .AddBuiltInComponents()
         .Add<Quantum.Carryable>(Quantum.Carryable.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Interactable>(Quantum.Interactable.Serialize, null, null, ComponentFlags.None)
@@ -1639,6 +1667,7 @@ namespace Quantum {
         .Add<Quantum.Submarine>(Quantum.Submarine.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.SubmarineInterior>(Quantum.SubmarineInterior.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.TeamLink>(Quantum.TeamLink.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.TerminalStation>(Quantum.TerminalStation.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.ThrustStation>(Quantum.ThrustStation.Serialize, null, null, ComponentFlags.None)
         .Finish();
     }

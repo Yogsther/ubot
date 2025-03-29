@@ -72,7 +72,23 @@ public class PlayerInput : MonoBehaviour
 		if (UnityEngine.Input.GetKey(KeyCode.A)) { moveDirection += Vector2.left; }
 		if (UnityEngine.Input.GetKey(KeyCode.D)) { moveDirection += Vector2.right; }
 
-		if(UnityEngine.Input.GetMouseButtonDown(0))
+		var alphabet = "abcdefghijklmnopqrstuvwxyz!";
+		_accumulatedInput.TextInput = -1;
+		for (int i = 0; i < alphabet.Length; i++)
+		{
+			if (UnityEngine.Input.GetKey(alphabet[i].ToString()))
+			{
+				_accumulatedInput.TextInput = i;
+			}
+		}
+
+		if (UnityEngine.Input.GetKeyDown(KeyCode.Return))
+		{
+			_accumulatedInput.TextInput = 26;
+		}
+
+
+		if (UnityEngine.Input.GetMouseButtonDown(0))
 		{
 			_accumulatedInput.Interact = true;
 		}
