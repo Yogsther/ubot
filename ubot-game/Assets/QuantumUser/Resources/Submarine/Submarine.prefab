@@ -862,7 +862,7 @@ MonoBehaviour:
     Acceleration:
       RawValue: 13107200
     TurnSpeed:
-      RawValue: 6553600
+      RawValue: 19660800
 --- !u!1 &8803634653163001141
 GameObject:
   m_ObjectHideFlags: 0
