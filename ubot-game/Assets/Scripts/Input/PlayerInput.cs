@@ -11,19 +11,6 @@ public class PlayerInput : MonoBehaviour
 	private bool _resetAccumulatedInput;
 	private int _lastAccumulateFrame;
 	private PolledInput[] _polledInputs = new PolledInput[20];
-	private float _jumpTime;
-
-	Vector2 moveInput = Vector2.zero;
-
-	public void OnMove(InputAction.CallbackContext context)
-	{
-		moveInput = context.ReadValue<Vector2>();
-	}
-
-	public void OnLook(InputAction.CallbackContext context)
-	{
-		moveInput = context.ReadValue<Vector2>();
-	}
 
 	private void Update()
 	{
@@ -85,6 +72,16 @@ public class PlayerInput : MonoBehaviour
 		if (UnityEngine.Input.GetKey(KeyCode.A)) { moveDirection += Vector2.left; }
 		if (UnityEngine.Input.GetKey(KeyCode.D)) { moveDirection += Vector2.right; }
 
+		if(UnityEngine.Input.GetMouseButtonDown(0))
+		{
+			_accumulatedInput.Interact = true;
+		}
+
+		if (UnityEngine.Input.GetMouseButtonDown(1))
+		{
+			_accumulatedInput.SecondInteract = true;
+		}
+
 		_accumulatedInput.MoveDirection = moveDirection.normalized.ToFPVector2();
 
 		_accumulatedInput.Jump |= UnityEngine.Input.GetKey(KeyCode.Space);
@@ -140,6 +137,7 @@ public class PlayerInput : MonoBehaviour
 		_lookRotationAccumulator.Add(consumeLookRotation - pollLookRotation.ToUnityVector2());
 
 		_accumulatedInput.LookRotationDelta = pollLookRotation;
+
 
 		_polledInputs[callback.Frame % _polledInputs.Length] = new PolledInput() { Frame = callback.Frame, Input = _accumulatedInput };
 		callback.SetInput(_accumulatedInput, DeterministicInputFlags.Repeatable);

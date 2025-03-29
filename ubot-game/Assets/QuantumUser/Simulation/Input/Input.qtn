@@ -1,25 +1,7 @@
 input {
-    // d-pad
-    button _left;
-    button _right;
-    button _up;
-    button _down;
-
-    // right buttons
-    button _a;
-    button _b;
-    button _c;
-    button _d;
-    
-    // digital extras (shoulder, select/start)
-    button _l1;
-    button _r1;
-    button _select;
-    button _start;
-    
-    // analog shoulder triggers
-    byte _analogRightTrigger;
-    byte _analogLeftTrigger;
+    button Interact;
+    button SecondInteract;
+    button Jump;
     
     // Thumb sticks use a union (questionable due to delta-compression)
     QuantumThumbSticks ThumbSticks;

@@ -100,13 +100,13 @@ MonoBehaviour:
   UseManifoldNormal: 0
   AirControl: 1
   Acceleration:
-    RawValue: 1638400
+    RawValue: 655360
   Braking:
     RawValue: 655360
   BaseJumpImpulse:
     RawValue: 262144
   MaxSpeed:
-    RawValue: 196608
+    RawValue: 98304
   Gravity:
     X:
       RawValue: 0
@@ -190,6 +190,26 @@ MonoBehaviour:
     SystemName: 
     StartDisabled: 0
     Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.InteractSystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.CarrySystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.SubmarineSystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.StationSystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
 --- !u!114 &-2078856454735644752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +264,7 @@ MonoBehaviour:
       RawValue: 66
     ShapeCastSoftTolerance:
       RawValue: 3277
-    AllowSleeping: 0
+    AllowSleeping: 1
     SleepTimeSec:
       RawValue: 32768
     LinearSleepTolerance:
@@ -285,6 +305,17 @@ MonoBehaviour:
     - 
     - Water
     - UI
+    - Interactable
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - LowRes
     - 
     - 
     - 
@@ -302,16 +333,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    LayerMatrix: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    LayerMatrix: fffdfffffffdfffffffdfffffffffffffffdfffffffdfffffffdffffffffffffffffffff88ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   Navigation:
     DefaultNavMeshAgent:
       Id:
@@ -390,17 +412,17 @@ MonoBehaviour:
     RawValue: 6554
   MaxContacts: 8
   LayerMask:
-    BitMask: -1
+    BitMask: 65
   UseManifoldNormal: 0
   AirControl: 1
   Acceleration:
-    RawValue: 1638400
+    RawValue: 983040
   Braking:
     RawValue: 655360
   BaseJumpImpulse:
     RawValue: 262144
   MaxSpeed:
-    RawValue: 196608
+    RawValue: 98304
   Gravity:
     X:
       RawValue: 0

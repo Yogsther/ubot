@@ -50,6 +50,21 @@ namespace Quantum.Prototypes.Unity {
   #endif //;
   
   [System.SerializableAttribute()]
+  public unsafe partial class CarryablePrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.CarryablePrototype> {
+    public Quantum.QuantumEntityPrototype Player;
+    public FPVector3 PositionOffset;
+    public FPVector3 RotationOffset;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.CarryablePrototype prototype);
+    public override Quantum.Prototypes.CarryablePrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.CarryablePrototype();
+      converter.Convert(this.Player, out result.Player);
+      converter.Convert(this.PositionOffset, out result.PositionOffset);
+      converter.Convert(this.RotationOffset, out result.RotationOffset);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
   public unsafe partial class KCCPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.KCCPrototype> {
     public AssetRef<KCCSettings> Settings;
     partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.KCCPrototype prototype);
@@ -97,6 +112,41 @@ namespace Quantum.Prototypes.Unity {
       var result = new Quantum.Prototypes.KCCModifierPrototype();
       converter.Convert(this.Processor, out result.Processor);
       converter.Convert(this.Entity, out result.Entity);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  public unsafe partial class PlayerPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.PlayerPrototype> {
+    public FP JumpForce;
+    [HideInInspector()]
+    public PlayerRef PlayerRef;
+    public Quantum.QuantumEntityPrototype CurrentlyCarrying;
+    public Quantum.QuantumEntityPrototype CurrentStation;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.PlayerPrototype prototype);
+    public override Quantum.Prototypes.PlayerPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.PlayerPrototype();
+      converter.Convert(this.JumpForce, out result.JumpForce);
+      converter.Convert(this.PlayerRef, out result.PlayerRef);
+      converter.Convert(this.CurrentlyCarrying, out result.CurrentlyCarrying);
+      converter.Convert(this.CurrentStation, out result.CurrentStation);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  public unsafe partial class StationPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.StationPrototype> {
+    public FPVector3 PlayerPosition;
+    public FPVector3 PlayerRotation;
+    public Quantum.QuantumEntityPrototype Player;
+    public Quantum.QuantumEntityPrototype Room;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.StationPrototype prototype);
+    public override Quantum.Prototypes.StationPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.StationPrototype();
+      converter.Convert(this.PlayerPosition, out result.PlayerPosition);
+      converter.Convert(this.PlayerRotation, out result.PlayerRotation);
+      converter.Convert(this.Player, out result.Player);
+      converter.Convert(this.Room, out result.Room);
       ConvertUser(converter, ref result);
       return result;
     }

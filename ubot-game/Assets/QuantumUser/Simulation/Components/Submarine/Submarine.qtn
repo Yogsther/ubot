@@ -1,0 +1,24 @@
+
+
+
+
+component Submarine
+{
+    [Header("Stats")]
+    FP Acceleration;
+    FP TurnSpeed;
+
+    [ExcludeFromPrototype] FP Steering;
+    [ExcludeFromPrototype] FP Throttle;
+    [ExcludeFromPrototype] FP TargetDepth;
+}
+
+component SubmarineInterior
+{
+    
+}
+
+event SubmarineDamaged
+{
+    
+}

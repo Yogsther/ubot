@@ -1,0 +1,19 @@
+
+global
+{
+    Transform3D AttackerSpawnPoint;
+    Transform3D DefenderSpawnPoint;
+}
+
+
+enum TeamRef
+{
+    Attacker = 0,
+    Defender = 1
+}
+
+
+component TeamLink
+{
+    TeamRef Team;
+}
