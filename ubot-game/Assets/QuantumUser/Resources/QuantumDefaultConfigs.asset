@@ -100,13 +100,13 @@ MonoBehaviour:
   UseManifoldNormal: 0
   AirControl: 1
   Acceleration:
-    RawValue: 1638400
+    RawValue: 655360
   Braking:
     RawValue: 655360
   BaseJumpImpulse:
     RawValue: 262144
   MaxSpeed:
-    RawValue: 196608
+    RawValue: 98304
   Gravity:
     X:
       RawValue: 0
@@ -187,6 +187,16 @@ MonoBehaviour:
     Children: []
   - SystemType:
       AssemblyQualifiedName: Quantum.PlayerSystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.InteractSystem, Quantum.Simulation
+    SystemName: 
+    StartDisabled: 0
+    Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.CarrySystem, Quantum.Simulation
     SystemName: 
     StartDisabled: 0
     Children: []
@@ -394,13 +404,13 @@ MonoBehaviour:
   UseManifoldNormal: 0
   AirControl: 1
   Acceleration:
-    RawValue: 1638400
+    RawValue: 983040
   Braking:
     RawValue: 655360
   BaseJumpImpulse:
     RawValue: 262144
   MaxSpeed:
-    RawValue: 196608
+    RawValue: 98304
   Gravity:
     X:
       RawValue: 0

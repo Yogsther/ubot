@@ -1,8 +1,8 @@
-
 component Player
 {
     FP JumpForce;
 
     [HideInInspector]
     PlayerRef PlayerRef;
+    bool IsCarrying;
 }

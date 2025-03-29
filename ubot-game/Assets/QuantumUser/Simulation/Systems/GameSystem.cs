@@ -13,17 +13,13 @@ namespace Quantum
 			SpawnSubmarine(f, TeamRef.Defender, new FPVector3(-FP._200, FP._0, -FP._200));
 		}
 
-		public void OnPlayerAdded(Frame f, PlayerRef player, bool firstTime)
+		public unsafe void OnPlayerAdded(Frame f, PlayerRef player, bool firstTime)
 		{
 			var playerEntity = f.Create(f.Config.PlayerPrototype);
+			var fields = f.Unsafe.GetPointer<Player>(playerEntity);
+			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
 
-			Player fields = new Player()
-			{
-				PlayerRef = player,
-				JumpForce = 10,
-			};
-
-			f.Add(playerEntity, fields);
+			fields->PlayerRef = player;
 		}
 
 		public override void Update(Frame f)

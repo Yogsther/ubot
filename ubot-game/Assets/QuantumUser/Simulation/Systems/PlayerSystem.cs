@@ -12,13 +12,13 @@ namespace Quantum
 		public struct Filter
 		{
 			public EntityRef Entity;
-			public Player*   Player;
-			public KCC*      KCC;
+			public Player* Player;
+			public KCC* KCC;
 		}
 
 		public override void Update(Frame frame, ref Filter filter)
 		{
-			KCC*    kcc    = filter.KCC;
+			KCC* kcc = filter.KCC;
 			Player* player = filter.Player;
 
 			if (player->PlayerRef.IsValid == false)
@@ -26,14 +26,17 @@ namespace Quantum
 
 			BasePlayerInput input = *frame.GetPlayerInput(player->PlayerRef);
 
-			Log.Debug($"PlayerSystem.Update: {player->PlayerRef} {input.MoveDirection.XOY} {input.LookRotationDelta}");
-
 			kcc->AddLookRotation(input.LookRotationDelta.X, input.LookRotationDelta.Y);
 			kcc->SetInputDirection(kcc->Data.TransformRotation * input.MoveDirection.XOY);
 
-			if (input.Jump.WasPressed == true && kcc->IsGrounded == true)
+			if (input.Jump.WasPressed && kcc->IsGrounded)
 			{
 				kcc->Jump(FPVector3.Up * player->JumpForce);
+			}
+
+			if (input.Interact.WasPressed)
+			{
+
 			}
 		}
 	}

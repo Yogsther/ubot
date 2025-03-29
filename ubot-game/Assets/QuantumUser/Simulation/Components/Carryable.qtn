@@ -1,0 +1,8 @@
+component Carryable{
+	EntityRef Player;
+	FPVector3 PositionOffset;
+	FPVector3 RotationOffset;
+}
+
+signal OnCarry (EntityRef Item, EntityRef Player);
+signal OnDrop (EntityRef Player);

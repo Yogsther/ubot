@@ -1,0 +1,5 @@
+asset Config;
+
+event OnGizmoLine{
+	FPVector3 From; FPVector3 To;
+}

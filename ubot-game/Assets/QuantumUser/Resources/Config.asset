@@ -22,3 +22,14 @@ MonoBehaviour:
   SubmarinePrototype:
     Id:
       Value: 1335929916265329953
+  InteractableMask:
+    BitMask: 64
+  PlayerCameraPosition:
+    X:
+      RawValue: 0
+    Y:
+      RawValue: 85197
+    Z:
+      RawValue: 32113
+  InteractDistance:
+    RawValue: 3271557
