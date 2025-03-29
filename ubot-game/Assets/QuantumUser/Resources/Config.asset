@@ -25,9 +25,9 @@ MonoBehaviour:
     X:
       RawValue: 0
     Y:
-      RawValue: 80806
+      RawValue: 82706
     Z:
-      RawValue: 31130
+      RawValue: 17498
   InteractDistance:
     RawValue: 3271557
   SubmarinePrototype:

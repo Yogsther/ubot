@@ -131,13 +131,6 @@ MonoBehaviour:
       MutableMode: 0
   MapEntities:
   - Components:
-    - rid: 3317749819685994496
-    - rid: 3317749819685994497
-    - rid: 3317749819685994498
-    - rid: 3317749819685994499
-    - rid: 3317749819685994500
-    - rid: 3317749819685994501
-  - Components:
     - rid: 3739951832949063680
     - rid: 3739951832949063681
     - rid: 3739951832949063682
@@ -151,6 +144,13 @@ MonoBehaviour:
     - rid: 3410010256984506371
     - rid: 3410010256984506372
     - rid: 3410010256984506373
+  - Components:
+    - rid: 3317749819685994496
+    - rid: 3317749819685994497
+    - rid: 3317749819685994498
+    - rid: 3317749819685994499
+    - rid: 3317749819685994500
+    - rid: 3317749819685994501
   SerializedTriangleDataUncompressedSize: 632792
   references:
     version: 2
@@ -160,18 +160,18 @@ MonoBehaviour:
       data:
         Position:
           X:
-            RawValue: 0
+            RawValue: -6422
           Y:
-            RawValue: 54394
+            RawValue: 49938
           Z:
-            RawValue: -5242
+            RawValue: 27328
         Rotation:
           X:
-            RawValue: 2878797
+            RawValue: 0
           Y:
             RawValue: 0
           Z:
-            RawValue: 0
+            RawValue: 18677760
     - rid: 3317749819685994497
       type: {class: PhysicsCollider3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -352,18 +352,18 @@ MonoBehaviour:
           SceneIndexPlusOne: 0
         PositionOffset:
           X:
-            RawValue: 0
+            RawValue: -6423
           Y:
-            RawValue: 43385
+            RawValue: 49938
           Z:
-            RawValue: 24183
+            RawValue: 27329
         RotationOffset:
           X:
             RawValue: 0
           Y:
             RawValue: 0
           Z:
-            RawValue: -4538630
+            RawValue: -4915200
     - rid: 3317749819685994501
       type: {class: InteractablePrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:

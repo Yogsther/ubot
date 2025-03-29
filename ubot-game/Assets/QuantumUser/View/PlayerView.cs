@@ -8,8 +8,8 @@ namespace Quantum
 	/// </summary>
 	public class PlayerView : QuantumEntityViewComponent<SceneContext>
 	{
-		public GameObject LocalPlayerVisual;
-		public GameObject RemotePlayerVisual;
+		public GameObject[] LocalPlayerVisual;
+		public GameObject[] RemotePlayerVisual;
 
 		public override void OnActivate(Frame frame)
 		{
@@ -41,8 +41,17 @@ namespace Quantum
 
 		private void RefreshVisuals(bool isLocal)
 		{
-			if (LocalPlayerVisual  != null) { LocalPlayerVisual.SetActive(isLocal);           }
-			if (RemotePlayerVisual != null) { RemotePlayerVisual.SetActive(isLocal == false); }
+			/*if (LocalPlayerVisual  != null) { LocalPlayerVisual.SetActive(isLocal);           }
+			if (RemotePlayerVisual != null) { RemotePlayerVisual.SetActive(isLocal == false); }*/
+			foreach(var visual in LocalPlayerVisual)
+			{
+				visual.SetActive(isLocal);
+			}
+
+			foreach (var visual in RemotePlayerVisual)
+			{
+				visual.SetActive(isLocal == false);
+			}
 		}
 	}
 }
