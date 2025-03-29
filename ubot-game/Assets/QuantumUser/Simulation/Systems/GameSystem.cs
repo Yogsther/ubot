@@ -27,11 +27,7 @@ namespace Quantum
 
 			f.Add(playerEntity, teamLink);
 
-			var playerName = f.GetPlayerData(player).PlayerNickname;
-
-			Debug.Log(playerName);
-
-			var spawnPosition = playerName == "PlayerBEN" ? f.Global->AttackerSpawnPoint.Position : f.Global->DefenderSpawnPoint.Position;
+			var spawnPosition = playerTeam == TeamRef.Attacker ? f.Global->AttackerSpawnPoint.Position : f.Global->DefenderSpawnPoint.Position;
 
 			Debug.Log(spawnPosition);
 
