@@ -3,7 +3,17 @@ guid: 362b12bd10ba2d840ae0047a6777bac7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NITTED
+    second: {fileID: 2100000, guid: 230bddb9983e206429d7fa1a388a485d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SKIN
+    second: {fileID: 2100000, guid: 71170a44cc77014479c0dfeec42c223a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
