@@ -103,3 +103,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheel: {fileID: 4300741165197117361}
+  compassNeedle: {fileID: 0}
