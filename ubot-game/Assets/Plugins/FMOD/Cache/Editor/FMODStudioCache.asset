@@ -54,6 +54,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7678579417817453821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/ChangeThrust
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/ChangeThrust
+  Guid:
+    Data1: 1570677604
+    Data2: 1206031905
+    Data3: 1810346685
+    Data4: -665493409
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7590956285519255506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +135,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6800505780388560324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/EnterSteering
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/EnterSteering
+  Guid:
+    Data1: 1247707790
+    Data2: 1182441368
+    Data3: 369628042
+    Data4: -2703123
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6454139331881517735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +182,7 @@ MonoBehaviour:
     Data4: -849452052
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -202,7 +256,7 @@ MonoBehaviour:
     Data4: 319564003
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -229,7 +283,7 @@ MonoBehaviour:
     Data4: 1051434894
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -303,7 +357,7 @@ MonoBehaviour:
     Data4: 1083402785
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -325,10 +379,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638788616476334253
+  lastModified: 638788638700570772
   FileSizes:
   - Name: Desktop
-    Value: 1054720
+    Value: 1132576
   Exists: 1
 --- !u!114 &-463238752861014642
 MonoBehaviour:
@@ -365,7 +419,7 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638788616476197892
+  lastModified: 638788633534410529
   FileSizes:
   - Name: Desktop
     Value: 711616
@@ -423,12 +477,14 @@ MonoBehaviour:
   - {fileID: 6501151390181021081}
   - {fileID: 2715167084730075417}
   - {fileID: -1385809922578619242}
+  - {fileID: -6800505780388560324}
+  - {fileID: -7678579417817453821}
   EditorParameters: []
   MasterBanks:
   - {fileID: 9099401297484674326}
   StringsBanks:
   - {fileID: 3550787641317174700}
-  cacheTime: 638788616476334253
+  cacheTime: 638788638700570772
   cacheVersion: 131846
 --- !u!114 &37250068163349981
 MonoBehaviour:
@@ -470,7 +526,7 @@ MonoBehaviour:
     Data4: 807932666
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -524,7 +580,7 @@ MonoBehaviour:
     Data4: -1909529082
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -546,10 +602,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638788616476228454
+  lastModified: 638788638698666945
   FileSizes:
   - Name: Desktop
-    Value: 1554
+    Value: 1642
   Exists: 1
 --- !u!114 &4382090173352369569
 MonoBehaviour:
@@ -571,7 +627,7 @@ MonoBehaviour:
     Data4: -1320339131
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -598,7 +654,7 @@ MonoBehaviour:
     Data4: 1582234740
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -679,7 +735,7 @@ MonoBehaviour:
     Data4: 1299326320
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -706,7 +762,7 @@ MonoBehaviour:
     Data4: -1708008941
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -753,7 +809,7 @@ MonoBehaviour:
     Data4: -60130178
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -775,7 +831,7 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638788616476203171
+  lastModified: 638788638698661695
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -800,7 +856,7 @@ MonoBehaviour:
     Data4: 1450364232
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []

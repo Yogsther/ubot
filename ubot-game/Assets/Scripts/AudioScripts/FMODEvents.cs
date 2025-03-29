@@ -32,6 +32,10 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField] public EventReference RequestFax { get; private set; }
 
+    [field: SerializeField] public EventReference EnterSteering { get; private set; }
+
+    [field: SerializeField] public EventReference ChangeThrust { get; private set; }
+
 
     [field: Header("ObjectSFX")]
 

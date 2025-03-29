@@ -114,6 +114,20 @@ MonoBehaviour:
       Data3: 380092316
       Data4: -1909529082
     Path: event:/SFX/Stations/RequestFax
+  <EnterSteering>k__BackingField:
+    Guid:
+      Data1: 1247707790
+      Data2: 1182441368
+      Data3: 369628042
+      Data4: -2703123
+    Path: event:/SFX/Stations/EnterSteering
+  <ChangeThrust>k__BackingField:
+    Guid:
+      Data1: 1570677604
+      Data2: 1206031905
+      Data3: 1810346685
+      Data4: -665493409
+    Path: event:/SFX/Stations/ChangeThrust
   <NeutralClick>k__BackingField:
     Guid:
       Data1: 1954960565

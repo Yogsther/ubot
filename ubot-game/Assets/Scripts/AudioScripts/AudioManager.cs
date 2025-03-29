@@ -9,12 +9,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private EventInstance submarineAmbienceEventInstance;
-
-    
-
-   
-    
-
+       
     
 
     //private FMOD.Studio.Bus masterBus;
