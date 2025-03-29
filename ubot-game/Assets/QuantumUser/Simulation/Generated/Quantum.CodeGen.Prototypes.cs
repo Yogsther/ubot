@@ -322,8 +322,9 @@ namespace Quantum.Prototypes {
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.Submarine))]
   public unsafe partial class SubmarinePrototype : ComponentPrototype<Quantum.Submarine> {
-    [HideInInspector()]
-    public Int32 _empty_prototype_dummy_field_;
+    [Header("Stats")]
+    public FP Acceleration;
+    public FP TurnSpeed;
     partial void MaterializeUser(Frame frame, ref Quantum.Submarine result, in PrototypeMaterializationContext context);
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.Submarine component = default;
@@ -331,6 +332,23 @@ namespace Quantum.Prototypes {
         return f.Set(entity, component) == SetResult.ComponentAdded;
     }
     public void Materialize(Frame frame, ref Quantum.Submarine result, in PrototypeMaterializationContext context = default) {
+        result.Acceleration = this.Acceleration;
+        result.TurnSpeed = this.TurnSpeed;
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.TeamLink))]
+  public unsafe partial class TeamLinkPrototype : ComponentPrototype<Quantum.TeamLink> {
+    public Quantum.QEnum32<TeamRef> Team;
+    partial void MaterializeUser(Frame frame, ref Quantum.TeamLink result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.TeamLink component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.TeamLink result, in PrototypeMaterializationContext context = default) {
+        result.Team = this.Team;
         MaterializeUser(frame, ref result, in context);
     }
   }

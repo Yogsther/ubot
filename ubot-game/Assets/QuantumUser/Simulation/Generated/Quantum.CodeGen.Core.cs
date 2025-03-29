@@ -65,6 +65,10 @@ namespace Quantum {
     StaticCollider = 2,
     EntityCollider = 3,
   }
+  public enum TeamRef : int {
+    Attacker = 0,
+    Defender = 1,
+  }
   [System.FlagsAttribute()]
   public enum InputButtons : int {
     _left = 1 << 0,
@@ -1204,18 +1208,58 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Submarine : Quantum.IComponent {
-    public const Int32 SIZE = 4;
-    public const Int32 ALIGNMENT = 4;
+    public const Int32 SIZE = 40;
+    public const Int32 ALIGNMENT = 8;
     [FieldOffset(0)]
-    private fixed Byte _alignment_padding_[4];
+    [Header("Stats")]
+    public FP Acceleration;
+    [FieldOffset(32)]
+    public FP TurnSpeed;
+    [FieldOffset(8)]
+    [ExcludeFromPrototype()]
+    public FP Steering;
+    [FieldOffset(24)]
+    [ExcludeFromPrototype()]
+    public FP Throttle;
+    [FieldOffset(16)]
+    [ExcludeFromPrototype()]
+    public FP TargetDepth;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 19183;
+        hash = hash * 31 + Acceleration.GetHashCode();
+        hash = hash * 31 + TurnSpeed.GetHashCode();
+        hash = hash * 31 + Steering.GetHashCode();
+        hash = hash * 31 + Throttle.GetHashCode();
+        hash = hash * 31 + TargetDepth.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (Submarine*)ptr;
+        FP.Serialize(&p->Acceleration, serializer);
+        FP.Serialize(&p->Steering, serializer);
+        FP.Serialize(&p->TargetDepth, serializer);
+        FP.Serialize(&p->Throttle, serializer);
+        FP.Serialize(&p->TurnSpeed, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct TeamLink : Quantum.IComponent {
+    public const Int32 SIZE = 4;
+    public const Int32 ALIGNMENT = 4;
+    [FieldOffset(0)]
+    public TeamRef Team;
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 20681;
+        hash = hash * 31 + (Int32)Team;
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (TeamLink*)ptr;
+        serializer.Stream.Serialize((Int32*)&p->Team);
     }
   }
   public static unsafe partial class Constants {
@@ -1274,6 +1318,8 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<Quantum.PlayerFields>();
       BuildSignalsArrayOnComponentAdded<Quantum.Submarine>();
       BuildSignalsArrayOnComponentRemoved<Quantum.Submarine>();
+      BuildSignalsArrayOnComponentAdded<Quantum.TeamLink>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.TeamLink>();
       BuildSignalsArrayOnComponentAdded<Transform2D>();
       BuildSignalsArrayOnComponentRemoved<Transform2D>();
       BuildSignalsArrayOnComponentAdded<Transform2DVertical>();
@@ -1423,6 +1469,8 @@ namespace Quantum {
       typeRegistry.Register(typeof(SpringJoint), SpringJoint.SIZE);
       typeRegistry.Register(typeof(SpringJoint3D), SpringJoint3D.SIZE);
       typeRegistry.Register(typeof(Quantum.Submarine), Quantum.Submarine.SIZE);
+      typeRegistry.Register(typeof(Quantum.TeamLink), Quantum.TeamLink.SIZE);
+      typeRegistry.Register(typeof(Quantum.TeamRef), 4);
       typeRegistry.Register(typeof(Transform2D), Transform2D.SIZE);
       typeRegistry.Register(typeof(Transform2DVertical), Transform2DVertical.SIZE);
       typeRegistry.Register(typeof(Transform3D), Transform3D.SIZE);
@@ -1430,13 +1478,14 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 5)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 6)
         .AddBuiltInComponents()
         .Add<Quantum.KCC>(Quantum.KCC.Serialize, null, Quantum.KCC.OnRemoved, ComponentFlags.None)
         .Add<Quantum.KCCProcessorLink>(Quantum.KCCProcessorLink.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Player>(Quantum.Player.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.PlayerFields>(Quantum.PlayerFields.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Submarine>(Quantum.Submarine.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.TeamLink>(Quantum.TeamLink.Serialize, null, null, ComponentFlags.None)
         .Finish();
     }
     [Preserve()]
@@ -1448,6 +1497,7 @@ namespace Quantum {
       FramePrinter.EnsurePrimitiveNotStripped<Quantum.EKCCProcessorSource>();
       FramePrinter.EnsurePrimitiveNotStripped<Quantum.InputButtons>();
       FramePrinter.EnsurePrimitiveNotStripped<QueryOptions>();
+      FramePrinter.EnsurePrimitiveNotStripped<Quantum.TeamRef>();
     }
   }
 }

@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 8272416360437501249}
   - component: {fileID: 3297649831491007137}
   - component: {fileID: 4554208777628171754}
+  - component: {fileID: 7158908957540296035}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Untagged
@@ -691,9 +692,9 @@ MonoBehaviour:
       _value:
         RawValue: 65536
     GravityScale:
-      _hasValue: 0
+      _hasValue: 1
       _value:
-        RawValue: 65536
+        RawValue: 0
   NavMeshPathfinder:
     IsEnabled: 0
     NavMeshAgentConfig:
@@ -761,6 +762,27 @@ MonoBehaviour:
   OnEntityDestroyed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7158908957540296035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184708634503429008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f727919b7a827394d900f0bbdaabadeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prototype:
+    Acceleration:
+      RawValue: 131072
+    Steering:
+      RawValue: 0
+    Throttle:
+      RawValue: 0
+    Depth:
+      RawValue: 0
 --- !u!1 &8803634653163001141
 GameObject:
   m_ObjectHideFlags: 0
