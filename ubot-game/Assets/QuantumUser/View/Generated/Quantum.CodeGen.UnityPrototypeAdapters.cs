@@ -50,6 +50,21 @@ namespace Quantum.Prototypes.Unity {
   #endif //;
   
   [System.SerializableAttribute()]
+  public unsafe partial class CarryablePrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.CarryablePrototype> {
+    public Quantum.QuantumEntityPrototype Player;
+    public FPVector3 PositionOffset;
+    public FPVector3 RotationOffset;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.CarryablePrototype prototype);
+    public override Quantum.Prototypes.CarryablePrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.CarryablePrototype();
+      converter.Convert(this.Player, out result.Player);
+      converter.Convert(this.PositionOffset, out result.PositionOffset);
+      converter.Convert(this.RotationOffset, out result.RotationOffset);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
   public unsafe partial class KCCPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.KCCPrototype> {
     public AssetRef<KCCSettings> Settings;
     partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.KCCPrototype prototype);

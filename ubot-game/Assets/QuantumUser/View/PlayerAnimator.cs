@@ -9,6 +9,7 @@ public class PlayerAnimator : QuantumEntityViewComponent<SceneContext>
 	public override void OnUpdateView()
 	{
 		KCC kcc = GetPredictedQuantumComponent<KCC>();
+		Player player = GetPredictedQuantumComponent<Player>();
 		FPQuaternion rotation = kcc.Data.LookRotation;
 		FPVector3 velocity = kcc.RealVelocity;
 		FPVector3 forward = rotation * FPVector3.Forward;
@@ -21,6 +22,7 @@ public class PlayerAnimator : QuantumEntityViewComponent<SceneContext>
 		}
 
 		animator.SetFloat("Speed", speed);
+		animator.SetBool("Carrying", player.IsCarrying);
 	}
 
 }

@@ -1,8 +1,8 @@
 component Player
 {
     FP JumpForce;
-    FP MaxSpeed;
 
     [HideInInspector]
     PlayerRef PlayerRef;
+    bool IsCarrying;
 }

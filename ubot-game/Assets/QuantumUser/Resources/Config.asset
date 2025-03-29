@@ -19,3 +19,14 @@ MonoBehaviour:
   PlayerPrototype:
     Id:
       Value: 1525884375776794709
+  InteractableMask:
+    BitMask: 64
+  PlayerCameraPosition:
+    X:
+      RawValue: 0
+    Y:
+      RawValue: 85197
+    Z:
+      RawValue: 32113
+  InteractDistance:
+    RawValue: 3271557

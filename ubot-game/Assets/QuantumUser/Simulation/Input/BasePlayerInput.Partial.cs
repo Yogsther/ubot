@@ -10,10 +10,14 @@ namespace Quantum
 		{
 			Input input = default;
 
-			input._a = playerInput.Jump;
+			input.Jump = playerInput.Jump;
+			input.Interact = playerInput.Interact;
+			input.SecondInteract = playerInput.SecondInteract;
 			input.ThumbSticks.HighRes->_leftThumb = playerInput.MoveDirection;
 			input.ThumbSticks.HighRes->_rightThumb.Pitch = playerInput.LookRotationDelta.X;
 			input.ThumbSticks.HighRes->_rightThumb.Yaw = playerInput.LookRotationDelta.Y;
+			
+
 
 			return input;
 		}
@@ -24,7 +28,9 @@ namespace Quantum
 		{
 			BasePlayerInput playerInput = default;
 
-			playerInput.Jump = input._a;
+			playerInput.Jump = input.Jump;
+			playerInput.Interact = input.Interact;
+			playerInput.SecondInteract = input.SecondInteract;
 			playerInput.MoveDirection = input.ThumbSticks.HighRes->_leftThumb;
 			playerInput.LookRotationDelta.X = input.ThumbSticks.HighRes->_rightThumb.Pitch;
 			playerInput.LookRotationDelta.Y = input.ThumbSticks.HighRes->_rightThumb.Yaw;

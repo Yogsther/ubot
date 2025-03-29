@@ -72,6 +72,16 @@ public class PlayerInput : MonoBehaviour
 		if (UnityEngine.Input.GetKey(KeyCode.A)) { moveDirection += Vector2.left; }
 		if (UnityEngine.Input.GetKey(KeyCode.D)) { moveDirection += Vector2.right; }
 
+		if(UnityEngine.Input.GetMouseButtonDown(0))
+		{
+			_accumulatedInput.Interact = true;
+		}
+
+		if (UnityEngine.Input.GetMouseButtonDown(1))
+		{
+			_accumulatedInput.SecondInteract = true;
+		}
+
 		_accumulatedInput.MoveDirection = moveDirection.normalized.ToFPVector2();
 
 		_accumulatedInput.Jump |= UnityEngine.Input.GetKey(KeyCode.Space);

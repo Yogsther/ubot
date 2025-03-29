@@ -17,9 +17,6 @@ namespace Quantum
 			var fields = f.Unsafe.GetPointer<Player>(playerEntity);
 			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
 
-			kcc->SetKinematicSpeed(fields->MaxSpeed);
-
-
 			fields->PlayerRef = player;
 		}
 

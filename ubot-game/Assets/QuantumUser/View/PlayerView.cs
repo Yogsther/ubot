@@ -1,5 +1,6 @@
 namespace Quantum
 {
+	using Photon.Deterministic;
 	using UnityEngine;
 
 	/// <summary>
@@ -13,6 +14,7 @@ namespace Quantum
 		public override void OnActivate(Frame frame)
 		{
 			Player player = GetPredictedQuantumComponent<Player>();
+
 
 			bool isLocal = Game.PlayerIsLocal(player.PlayerRef);
 			if (isLocal == true)

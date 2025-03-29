@@ -56,49 +56,63 @@ namespace Quantum.Prototypes {
     public FPVector2 MoveDirection;
     public FPVector2 LookRotationDelta;
     public Button Jump;
+    public Button Interact;
+    public Button SecondInteract;
     partial void MaterializeUser(Frame frame, ref Quantum.BasePlayerInput result, in PrototypeMaterializationContext context);
     public void Materialize(Frame frame, ref Quantum.BasePlayerInput result, in PrototypeMaterializationContext context = default) {
         result.MoveDirection = this.MoveDirection;
         result.LookRotationDelta = this.LookRotationDelta;
         result.Jump = this.Jump;
+        result.Interact = this.Interact;
+        result.SecondInteract = this.SecondInteract;
         MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.Carryable))]
+  public unsafe class CarryablePrototype : ComponentPrototype<Quantum.Carryable> {
+    public MapEntityId Player;
+    public FPVector3 PositionOffset;
+    public FPVector3 RotationOffset;
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.Carryable component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.Carryable result, in PrototypeMaterializationContext context = default) {
+        PrototypeValidator.FindMapEntity(this.Player, in context, out result.Player);
+        result.PositionOffset = this.PositionOffset;
+        result.RotationOffset = this.RotationOffset;
     }
   }
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.Input))]
   public unsafe partial class InputPrototype : StructPrototype {
-    public Button _left;
-    public Button _right;
-    public Button _up;
-    public Button _down;
-    public Button _a;
-    public Button _b;
-    public Button _c;
-    public Button _d;
-    public Button _l1;
-    public Button _r1;
-    public Button _select;
-    public Button _start;
-    public Byte _analogRightTrigger;
-    public Byte _analogLeftTrigger;
+    public Button Interact;
+    public Button SecondInteract;
+    public Button Jump;
     public Quantum.Prototypes.QuantumThumbSticksPrototype ThumbSticks;
     partial void MaterializeUser(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context);
     public void Materialize(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context = default) {
-        result._left = this._left;
-        result._right = this._right;
-        result._up = this._up;
-        result._down = this._down;
-        result._a = this._a;
-        result._b = this._b;
-        result._c = this._c;
-        result._d = this._d;
-        result._l1 = this._l1;
-        result._r1 = this._r1;
-        result._select = this._select;
-        result._start = this._start;
-        result._analogRightTrigger = this._analogRightTrigger;
-        result._analogLeftTrigger = this._analogLeftTrigger;
+        result.Interact = this.Interact;
+        result.SecondInteract = this.SecondInteract;
+        result.Jump = this.Jump;
         this.ThumbSticks.Materialize(frame, ref result.ThumbSticks, in context);
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.Interactable))]
+  public unsafe partial class InteractablePrototype : ComponentPrototype<Quantum.Interactable> {
+    [HideInInspector()]
+    public Int32 _empty_prototype_dummy_field_;
+    partial void MaterializeUser(Frame frame, ref Quantum.Interactable result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.Interactable component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.Interactable result, in PrototypeMaterializationContext context = default) {
         MaterializeUser(frame, ref result, in context);
     }
   }
@@ -246,9 +260,9 @@ namespace Quantum.Prototypes {
   [Quantum.Prototypes.Prototype(typeof(Quantum.Player))]
   public unsafe partial class PlayerPrototype : ComponentPrototype<Quantum.Player> {
     public FP JumpForce;
-    public FP MaxSpeed;
     [HideInInspector()]
     public PlayerRef PlayerRef;
+    public QBoolean IsCarrying;
     partial void MaterializeUser(Frame frame, ref Quantum.Player result, in PrototypeMaterializationContext context);
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.Player component = default;
@@ -257,8 +271,8 @@ namespace Quantum.Prototypes {
     }
     public void Materialize(Frame frame, ref Quantum.Player result, in PrototypeMaterializationContext context = default) {
         result.JumpForce = this.JumpForce;
-        result.MaxSpeed = this.MaxSpeed;
         result.PlayerRef = this.PlayerRef;
+        result.IsCarrying = this.IsCarrying;
         MaterializeUser(frame, ref result, in context);
     }
   }
