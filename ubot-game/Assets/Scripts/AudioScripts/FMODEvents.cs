@@ -9,6 +9,8 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField] public EventReference Walk { get; private set; }
 
+    [field: SerializeField] public EventReference PickUp { get; private set; }
+
 
 
 
@@ -37,7 +39,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference ChangeThrust { get; private set; }
 
 
-    [field: Header("ObjectSFX")]
+    
 
     
 
@@ -51,19 +53,17 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference NegativeClick { get; private set; }
 
 
+
     [field: Header("Ambience")]
      
     [field: SerializeField] public EventReference submarineAmbience { get; private set; }
 
-    
-
-
 
 
     [field: Header("Music")]
-   
 
-  
+    [field: SerializeField] public EventReference SubmarineLobbyMusic { get; private set; }
+
 
     public static FMODEvents instance { get; private set; }
     private void Awake()

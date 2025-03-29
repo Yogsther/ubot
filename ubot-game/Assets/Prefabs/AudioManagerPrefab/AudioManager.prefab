@@ -51,6 +51,13 @@ MonoBehaviour:
       Data3: -1505945153
       Data4: 319564003
     Path: event:/SFX/Player/Walk
+  <PickUp>k__BackingField:
+    Guid:
+      Data1: -299849245
+      Data2: 1223094830
+      Data3: 10848176
+      Data4: 1344731178
+    Path: event:/SFX/Player/PickUp
   <LoadTorpedo>k__BackingField:
     Guid:
       Data1: -1075513862
@@ -156,6 +163,13 @@ MonoBehaviour:
       Data3: 1352031391
       Data4: 2014750711
     Path: event:/Ambience/submarineAmbience
+  <SubmarineLobbyMusic>k__BackingField:
+    Guid:
+      Data1: -1187359972
+      Data2: 1185534945
+      Data3: -1228774775
+      Data4: 440155445
+    Path: event:/Music/SubmarineLobbyMusic
 --- !u!1 &7495239564497341018
 GameObject:
   m_ObjectHideFlags: 0

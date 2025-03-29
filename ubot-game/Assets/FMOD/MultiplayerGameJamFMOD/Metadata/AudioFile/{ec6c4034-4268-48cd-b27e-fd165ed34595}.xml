@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ec6c4034-4268-48cd-b27e-fd165ed34595}">
 		<property name="assetPath">
-			<value>NegativeClick.wav</value>
+			<value>UI/NegativeClick.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

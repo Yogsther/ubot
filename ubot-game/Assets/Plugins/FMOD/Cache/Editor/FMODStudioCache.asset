@@ -81,6 +81,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7604515454048675457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/SubmarineLobbyMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/SubmarineLobbyMusic
+  Guid:
+    Data1: -1187359972
+    Data2: 1185534945
+    Data3: -1228774775
+    Data4: 440155445
+  Banks:
+  - {fileID: 7517700507588290180}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 192000
 --- !u!114 &-7590956285519255506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +337,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 506
   Exists: 1
+--- !u!114 &-2355428480751156242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/PickUp
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/PickUp
+  Guid:
+    Data1: -299849245
+    Data2: 1223094830
+    Data3: 10848176
+    Data4: 1344731178
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1385809922578619242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,10 +433,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638788638700570772
+  lastModified: 638788680220696157
   FileSizes:
   - Name: Desktop
-    Value: 1132576
+    Value: 1139520
   Exists: 1
 --- !u!114 &-463238752861014642
 MonoBehaviour:
@@ -479,12 +533,14 @@ MonoBehaviour:
   - {fileID: -1385809922578619242}
   - {fileID: -6800505780388560324}
   - {fileID: -7678579417817453821}
+  - {fileID: -7604515454048675457}
+  - {fileID: -2355428480751156242}
   EditorParameters: []
   MasterBanks:
   - {fileID: 9099401297484674326}
   StringsBanks:
   - {fileID: 3550787641317174700}
-  cacheTime: 638788638700570772
+  cacheTime: 638788680220696157
   cacheVersion: 131846
 --- !u!114 &37250068163349981
 MonoBehaviour:
@@ -602,10 +658,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638788638698666945
+  lastModified: 638788680219576117
   FileSizes:
   - Name: Desktop
-    Value: 1642
+    Value: 1746
   Exists: 1
 --- !u!114 &4382090173352369569
 MonoBehaviour:
@@ -784,10 +840,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638788616476238780
+  lastModified: 638788674201326698
   FileSizes:
   - Name: Desktop
-    Value: 506
+    Value: 1833152
   Exists: 1
 --- !u!114 &8256025601472840454
 MonoBehaviour:
@@ -831,7 +887,7 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638788638698661695
+  lastModified: 638788680219561001
   FileSizes:
   - Name: Desktop
     Value: 1074

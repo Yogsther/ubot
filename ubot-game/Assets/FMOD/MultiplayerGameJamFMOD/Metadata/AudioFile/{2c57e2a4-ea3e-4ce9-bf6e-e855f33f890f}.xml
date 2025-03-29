@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{2c57e2a4-ea3e-4ce9-bf6e-e855f33f890f}">
 		<property name="assetPath">
-			<value>PositiveClick.wav</value>
+			<value>UI/PositiveClick.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

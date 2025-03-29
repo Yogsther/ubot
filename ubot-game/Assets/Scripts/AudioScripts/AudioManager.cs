@@ -9,14 +9,18 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private EventInstance submarineAmbienceEventInstance;
-       
-    
+
+    private EventInstance SubmarineLobbyMusicEventInstance;
+
+
 
     //private FMOD.Studio.Bus masterBus;
 
-	private void Start()
+    private void Start()
     {
         InititializeSubmarineAmbience(FMODEvents.instance.submarineAmbience);
+
+        InititializeSubmarineLobbyMusic(FMODEvents.instance.SubmarineLobbyMusic);
     }
     private void Update()
     {
@@ -40,28 +44,44 @@ public class AudioManager : MonoBehaviour
 		//masterBus = RuntimeManager.GetBus("bus:/");
 	}
 
-	public void StopSubmarineAmbience()
+    public void StopLobbyMusic()
+    {
+        SubmarineLobbyMusicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+
+    }
+
+    public void StartLobbyMusic()
+    {
+        SubmarineLobbyMusicEventInstance.start();
+
+
+    }
+    public void StopSubmarineAmbience()
     {
         submarineAmbienceEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
-    /*public void StopWalk()
-    {
-        WalkingDirt.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        RunningDirt.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-    }*/
 
-    /*public void StopWendigoSound()
+    public void StartSubmarineAmbience()
     {
-        WendigoBreath.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        
-    }*/
+        submarineAmbienceEventInstance.start();
+
+
+    }
+
+
 
     private void InititializeSubmarineAmbience(EventReference submarineAmbienceEventReference)
     {
         submarineAmbienceEventInstance = CreateInstance(submarineAmbienceEventReference);
-        submarineAmbienceEventInstance.start();
+        //submarineAmbienceEventInstance.start();
     }
 
+    private void InititializeSubmarineLobbyMusic(EventReference SubmarineLobbyMusicEventReference)
+    {
+        SubmarineLobbyMusicEventInstance = CreateInstance(SubmarineLobbyMusicEventReference);
+        
+    }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
