@@ -18,6 +18,9 @@ namespace Quantum
 			player->CurrentStation = stationEntity;
 			station->Player = playerEntity;
 
+			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
+			kcc->SetActive(false);
+
 			TrackPlayerToStation(f, stationEntity);
 		}
 
@@ -32,6 +35,9 @@ namespace Quantum
 
 			player->CurrentStation = EntityRef.None;
 			station->Player = EntityRef.None;
+
+			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
+			kcc->SetActive(true);
 		}
 
 		public override void Update(Frame f, ref Filter filter)
@@ -68,6 +74,16 @@ namespace Quantum
 					thrustStation->Throttle = FPMath.Clamp(thrustStation->Throttle, -1, 1);
 					submarine->Throttle = thrustStation->Throttle;
 				}
+
+				if(f.Unsafe.TryGetPointer(filter.Entity, out TerminalStation* terminalStation))
+				{
+					if(input.TextInput != -1)
+					{
+						string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+						f.Events.OnTerminalInput(filter.Entity, alphabet[input.TextInput].ToString());
+					}
+				}
+
 			}
 		}
 

@@ -52,7 +52,7 @@ namespace Quantum {
   public unsafe partial class Frame {
     public unsafe partial struct FrameEvents {
       static partial void GetEventTypeCountCodeGen(ref Int32 eventCount) {
-        eventCount = 3;
+        eventCount = 4;
       }
       static partial void GetParentEventIDCodeGen(Int32 eventID, ref Int32 parentEventID) {
         switch (eventID) {
@@ -62,6 +62,7 @@ namespace Quantum {
       static partial void GetEventTypeCodeGen(Int32 eventID, ref System.Type result) {
         switch (eventID) {
           case EventOnGizmoLine.ID: result = typeof(EventOnGizmoLine); return;
+          case EventOnTerminalInput.ID: result = typeof(EventOnTerminalInput); return;
           case EventSubmarineDamaged.ID: result = typeof(EventSubmarineDamaged); return;
           default: break;
         }
@@ -70,6 +71,13 @@ namespace Quantum {
         var ev = _f.Context.AcquireEvent<EventOnGizmoLine>(EventOnGizmoLine.ID);
         ev.From = From;
         ev.To = To;
+        _f.AddEvent(ev);
+        return ev;
+      }
+      public EventOnTerminalInput OnTerminalInput(EntityRef terminal, String text) {
+        var ev = _f.Context.AcquireEvent<EventOnTerminalInput>(EventOnTerminalInput.ID);
+        ev.terminal = terminal;
+        ev.text = text;
         _f.AddEvent(ev);
         return ev;
       }
@@ -107,12 +115,14 @@ namespace Quantum {
       }
     }
   }
-  public unsafe partial class EventSubmarineDamaged : EventBase {
+  public unsafe partial class EventOnTerminalInput : EventBase {
     public new const Int32 ID = 2;
-    protected EventSubmarineDamaged(Int32 id, EventFlags flags) : 
+    public EntityRef terminal;
+    public String text;
+    protected EventOnTerminalInput(Int32 id, EventFlags flags) : 
         base(id, flags) {
     }
-    public EventSubmarineDamaged() : 
+    public EventOnTerminalInput() : 
         base(2, EventFlags.Server|EventFlags.Client) {
     }
     public new QuantumGame Game {
@@ -126,6 +136,31 @@ namespace Quantum {
     public override Int32 GetHashCode() {
       unchecked {
         var hash = 43;
+        hash = hash * 31 + terminal.GetHashCode();
+        hash = hash * 31 + text.GetHashCode();
+        return hash;
+      }
+    }
+  }
+  public unsafe partial class EventSubmarineDamaged : EventBase {
+    public new const Int32 ID = 3;
+    protected EventSubmarineDamaged(Int32 id, EventFlags flags) : 
+        base(id, flags) {
+    }
+    public EventSubmarineDamaged() : 
+        base(3, EventFlags.Server|EventFlags.Client) {
+    }
+    public new QuantumGame Game {
+      get {
+        return (QuantumGame)base.Game;
+      }
+      set {
+        base.Game = value;
+      }
+    }
+    public override Int32 GetHashCode() {
+      unchecked {
+        var hash = 47;
         return hash;
       }
     }

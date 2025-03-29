@@ -4,7 +4,6 @@ using UnityEngine;
 public class SteerStationView : QuantumEntityViewComponent
 {
 	[SerializeField] private Transform wheel;
-	[SerializeField] private RectTransform compassNeedle;
 
 	public override void OnUpdateView()
 	{

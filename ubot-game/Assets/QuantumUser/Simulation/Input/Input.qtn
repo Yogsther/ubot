@@ -2,6 +2,7 @@ input {
     button Interact;
     button SecondInteract;
     button Jump;
+    int TextInput;
     
     // Thumb sticks use a union (questionable due to delta-compression)
     QuantumThumbSticks ThumbSticks;

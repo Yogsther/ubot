@@ -22,10 +22,7 @@ namespace Quantum
 			{
 				if (subTeamLink->Team == team)
 				{
-					Debug.Log("Got here!");
-
-					Debug.Log(Mathf.Rad2Deg * subTransform->Rotation.Y.AsFloat);
-					compassNeedle.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, Mathf.Rad2Deg * subTransform->Rotation.Y.AsFloat));
+					compassNeedle.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, Mathf.Rad2Deg * subTransform->Rotation.Y.AsFloat));
 				}
 			}
 		}

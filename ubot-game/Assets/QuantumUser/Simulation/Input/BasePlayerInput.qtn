@@ -6,4 +6,5 @@ struct BasePlayerInput
     button    Jump;
     button Interact;
     button SecondInteract;
+    int TextInput;
 }

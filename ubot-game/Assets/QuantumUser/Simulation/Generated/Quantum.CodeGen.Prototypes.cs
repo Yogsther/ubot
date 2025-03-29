@@ -58,6 +58,7 @@ namespace Quantum.Prototypes {
     public Button Jump;
     public Button Interact;
     public Button SecondInteract;
+    public Int32 TextInput;
     partial void MaterializeUser(Frame frame, ref Quantum.BasePlayerInput result, in PrototypeMaterializationContext context);
     public void Materialize(Frame frame, ref Quantum.BasePlayerInput result, in PrototypeMaterializationContext context = default) {
         result.MoveDirection = this.MoveDirection;
@@ -65,6 +66,7 @@ namespace Quantum.Prototypes {
         result.Jump = this.Jump;
         result.Interact = this.Interact;
         result.SecondInteract = this.SecondInteract;
+        result.TextInput = this.TextInput;
         MaterializeUser(frame, ref result, in context);
     }
   }
@@ -91,12 +93,14 @@ namespace Quantum.Prototypes {
     public Button Interact;
     public Button SecondInteract;
     public Button Jump;
+    public Int32 TextInput;
     public Quantum.Prototypes.QuantumThumbSticksPrototype ThumbSticks;
     partial void MaterializeUser(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context);
     public void Materialize(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context = default) {
         result.Interact = this.Interact;
         result.SecondInteract = this.SecondInteract;
         result.Jump = this.Jump;
+        result.TextInput = this.TextInput;
         this.ThumbSticks.Materialize(frame, ref result.ThumbSticks, in context);
         MaterializeUser(frame, ref result, in context);
     }
@@ -416,6 +420,21 @@ namespace Quantum.Prototypes {
     }
     public void Materialize(Frame frame, ref Quantum.TeamLink result, in PrototypeMaterializationContext context = default) {
         result.Team = this.Team;
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.TerminalStation))]
+  public unsafe partial class TerminalStationPrototype : ComponentPrototype<Quantum.TerminalStation> {
+    [HideInInspector()]
+    public Int32 _empty_prototype_dummy_field_;
+    partial void MaterializeUser(Frame frame, ref Quantum.TerminalStation result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.TerminalStation component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.TerminalStation result, in PrototypeMaterializationContext context = default) {
         MaterializeUser(frame, ref result, in context);
     }
   }
