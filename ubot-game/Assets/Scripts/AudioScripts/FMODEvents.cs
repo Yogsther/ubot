@@ -9,7 +9,14 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField] public EventReference Walk { get; private set; }
 
-    [field: SerializeField] public EventReference Run { get; private set; }
+
+
+
+    [field: Header("StationSFX")]
+
+    [field: SerializeField] public EventReference LoadTorpedo { get; private set; }
+
+
 
 
     [field: Header("ObjectSFX")]

@@ -51,20 +51,13 @@ MonoBehaviour:
       Data3: 1618759304
       Data4: -1963231582
     Path: event:/SFX/Player/Walk
-  <Run>k__BackingField:
+  <LoadTorpedo>k__BackingField:
     Guid:
-      Data1: -743246966
-      Data2: 1203178111
-      Data3: 2114614928
-      Data4: -2001305977
-    Path: event:/SFX/Player/Run
-  <ObjectInWorld>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1075513862
+      Data2: 1081425278
+      Data3: -239074418
+      Data4: 1582234740
+    Path: event:/SFX/Stations/LoadTorpedo
   <NeutralClick>k__BackingField:
     Guid:
       Data1: 1954960565

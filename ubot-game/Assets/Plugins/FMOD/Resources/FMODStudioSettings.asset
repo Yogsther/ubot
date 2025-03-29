@@ -602,7 +602,7 @@ MonoBehaviour:
   sourceProjectPath: Assets/FMOD/MultiplayerGameJamFMOD/MultiplayerGameJam.fspro
   sourceBankPath: Assets/FMOD/MultiplayerGameJamFMOD/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
