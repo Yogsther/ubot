@@ -1163,10 +1163,12 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Player : Quantum.IComponent {
-    public const Int32 SIZE = 16;
+    public const Int32 SIZE = 24;
     public const Int32 ALIGNMENT = 8;
     [FieldOffset(8)]
     public FP JumpForce;
+    [FieldOffset(16)]
+    public FP MaxSpeed;
     [FieldOffset(0)]
     [HideInInspector()]
     public PlayerRef PlayerRef;
@@ -1174,6 +1176,7 @@ namespace Quantum {
       unchecked { 
         var hash = 2621;
         hash = hash * 31 + JumpForce.GetHashCode();
+        hash = hash * 31 + MaxSpeed.GetHashCode();
         hash = hash * 31 + PlayerRef.GetHashCode();
         return hash;
       }
@@ -1182,6 +1185,7 @@ namespace Quantum {
         var p = (Player*)ptr;
         PlayerRef.Serialize(&p->PlayerRef, serializer);
         FP.Serialize(&p->JumpForce, serializer);
+        FP.Serialize(&p->MaxSpeed, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]

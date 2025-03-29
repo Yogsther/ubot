@@ -246,6 +246,7 @@ namespace Quantum.Prototypes {
   [Quantum.Prototypes.Prototype(typeof(Quantum.Player))]
   public unsafe partial class PlayerPrototype : ComponentPrototype<Quantum.Player> {
     public FP JumpForce;
+    public FP MaxSpeed;
     [HideInInspector()]
     public PlayerRef PlayerRef;
     partial void MaterializeUser(Frame frame, ref Quantum.Player result, in PrototypeMaterializationContext context);
@@ -256,6 +257,7 @@ namespace Quantum.Prototypes {
     }
     public void Materialize(Frame frame, ref Quantum.Player result, in PrototypeMaterializationContext context = default) {
         result.JumpForce = this.JumpForce;
+        result.MaxSpeed = this.MaxSpeed;
         result.PlayerRef = this.PlayerRef;
         MaterializeUser(frame, ref result, in context);
     }
