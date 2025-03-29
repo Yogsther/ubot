@@ -718,6 +718,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1667695423301167564}
     m_Modifications:
+    - target: {fileID: 3949131522621115974, guid: 3d13278fc2ded5a48b92711f4c582f52, type: 3}
+      propertyPath: Prototype.Room
+      value: 
+      objectReference: {fileID: 2293527902242446946}
     - target: {fileID: 4330195953534773559, guid: 3d13278fc2ded5a48b92711f4c582f52, type: 3}
       propertyPath: m_Name
       value: SteeringStation
