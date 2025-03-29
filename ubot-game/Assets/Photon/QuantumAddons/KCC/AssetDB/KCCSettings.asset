@@ -17,7 +17,7 @@ MonoBehaviour:
     Guid:
       Value: 385596505887953737
   Radius:
-    RawValue: 22937
+    RawValue: 32768
   Height:
     RawValue: 117964
   Extent:
