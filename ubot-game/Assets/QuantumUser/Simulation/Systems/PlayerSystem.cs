@@ -27,16 +27,15 @@ namespace Quantum
 			BasePlayerInput input = *frame.GetPlayerInput(player->PlayerRef);
 
 			kcc->AddLookRotation(input.LookRotationDelta.X, input.LookRotationDelta.Y);
-			kcc->SetInputDirection(kcc->Data.TransformRotation * input.MoveDirection.XOY);
 
-			if (input.Jump.WasPressed && kcc->IsGrounded)
+			if (!filter.Player->CurrentStation.IsValid)
 			{
-				kcc->Jump(FPVector3.Up * player->JumpForce);
-			}
+				kcc->SetInputDirection(kcc->Data.TransformRotation * input.MoveDirection.XOY);
 
-			if (input.Interact.WasPressed)
-			{
-
+				if (input.Jump.WasPressed && kcc->IsGrounded)
+				{
+					kcc->Jump(FPVector3.Up * player->JumpForce);
+				}
 			}
 		}
 	}

@@ -13,7 +13,13 @@ namespace Quantum
 
 			if (input->SecondInteract.WasPressed)
 			{
-				f.Signals.OnDrop(filter.Entity);
+				if(filter.Player->CurrentlyCarrying.IsValid)
+				{
+					f.Signals.OnDrop(filter.Entity);
+				} else if(filter.Player->CurrentStation.IsValid)
+				{
+					f.Signals.OnPlayerLeaveStation(filter.Entity);
+				}
 			}
 
 			if (input->Interact.WasPressed)
@@ -34,6 +40,12 @@ namespace Quantum
 					if (f.Unsafe.TryGetPointer(entity, out Carryable* carryable))
 					{
 						f.Signals.OnCarry(entity, filter.Entity);
+					}
+
+					if(f.Unsafe.TryGetPointer(entity, out Station* station))
+					{
+						Log.Debug("Enter station...");
+						f.Signals.OnPlayerEnterStation(filter.Entity, entity);
 					}
 
 					var hitPosition = hit.Value.Point;

@@ -4,5 +4,6 @@ component Player
 
     [HideInInspector]
     PlayerRef PlayerRef;
-    bool IsCarrying;
+    EntityRef CurrentlyCarrying;
+    EntityRef CurrentStation;
 }
