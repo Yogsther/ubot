@@ -19,3 +19,6 @@ MonoBehaviour:
   PlayerPrototype:
     Id:
       Value: 1525884375776794709
+  SubmarinePrototype:
+    Id:
+      Value: 1335929916265329953
