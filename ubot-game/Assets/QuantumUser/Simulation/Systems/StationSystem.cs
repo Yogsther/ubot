@@ -36,7 +36,17 @@ namespace Quantum
 
 		public override void Update(Frame f, ref Filter filter)
 		{
-			if(filter.Station->Player.IsValid)
+			var teamLink = f.Unsafe.GetPointer<TeamLink>(filter.Station->Room);
+			var subFilter = f.Filter<Submarine, TeamLink>();
+			Submarine* submarine = null;
+
+			while (subFilter.NextUnsafe(out _, out Submarine* sub, out TeamLink* subTeamLink))
+			{
+				if(subTeamLink->Team == teamLink->Team) submarine = sub;
+			}
+
+
+			if (filter.Station->Player.IsValid)
 			{
 				TrackPlayerToStation(f, filter.Entity);
 
@@ -48,6 +58,7 @@ namespace Quantum
 					var moveDirection = input.MoveDirection.XOY;
 					steerStation->Steering += moveDirection.X * steerStation->SteeringSpeed * f.DeltaTime;
 					steerStation->Steering = FPMath.Clamp(steerStation->Steering, -1, 1);
+					submarine->Steering = steerStation->Steering;
 				}
 			}
 		}

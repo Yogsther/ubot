@@ -139,12 +139,14 @@ namespace Quantum.Prototypes.Unity {
     public FPVector3 PlayerPosition;
     public FPVector3 PlayerRotation;
     public Quantum.QuantumEntityPrototype Player;
+    public Quantum.QuantumEntityPrototype Room;
     partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.StationPrototype prototype);
     public override Quantum.Prototypes.StationPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
       var result = new Quantum.Prototypes.StationPrototype();
       converter.Convert(this.PlayerPosition, out result.PlayerPosition);
       converter.Convert(this.PlayerRotation, out result.PlayerRotation);
       converter.Convert(this.Player, out result.Player);
+      converter.Convert(this.Room, out result.Room);
       ConvertUser(converter, ref result);
       return result;
     }

@@ -341,6 +341,7 @@ namespace Quantum.Prototypes {
     public FPVector3 PlayerPosition;
     public FPVector3 PlayerRotation;
     public MapEntityId Player;
+    public MapEntityId Room;
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.Station component = default;
         Materialize((Frame)f, ref component, in context);
@@ -350,6 +351,7 @@ namespace Quantum.Prototypes {
         result.PlayerPosition = this.PlayerPosition;
         result.PlayerRotation = this.PlayerRotation;
         PrototypeValidator.FindMapEntity(this.Player, in context, out result.Player);
+        PrototypeValidator.FindMapEntity(this.Room, in context, out result.Room);
     }
   }
   [System.SerializableAttribute()]
@@ -384,6 +386,21 @@ namespace Quantum.Prototypes {
     public void Materialize(Frame frame, ref Quantum.Submarine result, in PrototypeMaterializationContext context = default) {
         result.Acceleration = this.Acceleration;
         result.TurnSpeed = this.TurnSpeed;
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.SubmarineInterior))]
+  public unsafe partial class SubmarineInteriorPrototype : ComponentPrototype<Quantum.SubmarineInterior> {
+    [HideInInspector()]
+    public Int32 _empty_prototype_dummy_field_;
+    partial void MaterializeUser(Frame frame, ref Quantum.SubmarineInterior result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.SubmarineInterior component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.SubmarineInterior result, in PrototypeMaterializationContext context = default) {
         MaterializeUser(frame, ref result, in context);
     }
   }

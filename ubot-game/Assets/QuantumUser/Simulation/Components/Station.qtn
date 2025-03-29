@@ -2,6 +2,7 @@ component Station {
 	FPVector3 PlayerPosition;
 	FPVector3 PlayerRotation;
 	EntityRef Player;
+	EntityRef Room;
 }
 
 component SteerStation{

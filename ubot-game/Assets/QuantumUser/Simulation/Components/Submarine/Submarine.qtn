@@ -13,6 +13,11 @@ component Submarine
     [ExcludeFromPrototype] FP TargetDepth;
 }
 
+component SubmarineInterior
+{
+    
+}
+
 event SubmarineDamaged
 {
     

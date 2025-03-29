@@ -201,7 +201,7 @@ MonoBehaviour:
     StartDisabled: 0
     Children: []
   - SystemType:
-      AssemblyQualifiedName: Quantum.StationSystem, Quantum.Simulation
+      AssemblyQualifiedName: Quantum.SubmarineSystem, Quantum.Simulation
     SystemName: 
     StartDisabled: 0
     Children: []
@@ -326,7 +326,9 @@ MonoBehaviour:
     - 
     - 
     - 
-    LayerMatrix: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    - 
+    - 
+    LayerMatrix: fffdfffffffdfffffffdfffffffffffffffdfffffffdfffffffdffffffffffffffffffff88ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   Navigation:
     DefaultNavMeshAgent:
       Id:
