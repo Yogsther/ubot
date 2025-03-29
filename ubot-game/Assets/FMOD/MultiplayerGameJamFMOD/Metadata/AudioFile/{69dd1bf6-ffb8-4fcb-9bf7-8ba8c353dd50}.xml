@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{d72a2e8e-6059-46ee-adc0-4c11cf72a11c}">
+	<object class="AudioFile" id="{69dd1bf6-ffb8-4fcb-9bf7-8ba8c353dd50}">
 		<property name="assetPath">
-			<value>Stations/InitiateNuke.wav</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>PickUp/RandomGrunt3.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -14,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>10.798104166666667</value>
+			<value>0.76002083333333337</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f99a91a6-14be-4322-81a6-a4a685c12db9}</destination>

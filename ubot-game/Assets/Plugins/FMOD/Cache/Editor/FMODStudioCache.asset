@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-8336906847798893241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/NukeAlarm
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/NukeAlarm
+  Guid:
+    Data1: 1628078114
+    Data2: 1332863406
+    Data3: -1303860580
+    Data4: -546413983
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8062418660971922059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +101,7 @@ MonoBehaviour:
     Data4: -665493409
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -182,7 +209,7 @@ MonoBehaviour:
     Data4: -2703123
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -209,7 +236,7 @@ MonoBehaviour:
     Data4: -849452052
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -283,7 +310,7 @@ MonoBehaviour:
     Data4: 319564003
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -310,7 +337,7 @@ MonoBehaviour:
     Data4: 1051434894
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -384,7 +411,7 @@ MonoBehaviour:
     Data4: 974065924
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -411,7 +438,7 @@ MonoBehaviour:
     Data4: 1083402785
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -433,10 +460,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638788680220696157
+  lastModified: 638788710463154942
   FileSizes:
   - Name: Desktop
-    Value: 1139520
+    Value: 1384864
   Exists: 1
 --- !u!114 &-463238752861014642
 MonoBehaviour:
@@ -535,12 +562,16 @@ MonoBehaviour:
   - {fileID: -7678579417817453821}
   - {fileID: -7604515454048675457}
   - {fileID: -2355428480751156242}
+  - {fileID: -8336906847798893241}
+  - {fileID: 7196227612119639834}
+  - {fileID: 1975258760986925701}
+  - {fileID: 7654939599947425770}
   EditorParameters: []
   MasterBanks:
   - {fileID: 9099401297484674326}
   StringsBanks:
   - {fileID: 3550787641317174700}
-  cacheTime: 638788680220696157
+  cacheTime: 638788710463154942
   cacheVersion: 131846
 --- !u!114 &37250068163349981
 MonoBehaviour:
@@ -582,7 +613,7 @@ MonoBehaviour:
     Data4: 807932666
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -616,6 +647,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 400
+--- !u!114 &1975258760986925701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/NukeBlowUp
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/NukeBlowUp
+  Guid:
+    Data1: -1526761525
+    Data2: 1340285475
+    Data3: -1874078564
+    Data4: 67362361
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2715167084730075417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +694,7 @@ MonoBehaviour:
     Data4: -1909529082
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -658,10 +716,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638788680219576117
+  lastModified: 638788710461799602
   FileSizes:
   - Name: Desktop
-    Value: 1746
+    Value: 1914
   Exists: 1
 --- !u!114 &4382090173352369569
 MonoBehaviour:
@@ -683,7 +741,7 @@ MonoBehaviour:
     Data4: -1320339131
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -710,7 +768,7 @@ MonoBehaviour:
     Data4: 1582234740
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -791,7 +849,7 @@ MonoBehaviour:
     Data4: 1299326320
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -818,8 +876,35 @@ MonoBehaviour:
     Data4: -1708008941
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7196227612119639834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/TorpedoImpact
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/TorpedoImpact
+  Guid:
+    Data1: -987180477
+    Data2: 1283088223
+    Data3: 1666571911
+    Data4: -354042681
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -845,6 +930,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1833152
   Exists: 1
+--- !u!114 &7654939599947425770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/RandomGrunt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/RandomGrunt
+  Guid:
+    Data1: -4646401
+    Data2: 1267454128
+    Data3: 1571621015
+    Data4: 1023603660
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8256025601472840454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +977,7 @@ MonoBehaviour:
     Data4: -60130178
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -887,7 +999,7 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638788680219561001
+  lastModified: 638788710461779511
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -912,7 +1024,7 @@ MonoBehaviour:
     Data4: 1450364232
   Banks:
   - {fileID: -671920187902023065}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []

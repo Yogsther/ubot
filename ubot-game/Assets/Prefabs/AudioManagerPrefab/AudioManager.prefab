@@ -58,6 +58,34 @@ MonoBehaviour:
       Data3: 10848176
       Data4: 1344731178
     Path: event:/SFX/Player/PickUp
+  <NukeAlarm>k__BackingField:
+    Guid:
+      Data1: 1628078114
+      Data2: 1332863406
+      Data3: -1303860580
+      Data4: -546413983
+    Path: event:/SFX/Stations/NukeAlarm
+  <NukeBlowUp>k__BackingField:
+    Guid:
+      Data1: -1526761525
+      Data2: 1340285475
+      Data3: -1874078564
+      Data4: 67362361
+    Path: event:/SFX/Player/NukeBlowUp
+  <TorpedoImpact>k__BackingField:
+    Guid:
+      Data1: -987180477
+      Data2: 1283088223
+      Data3: 1666571911
+      Data4: -354042681
+    Path: event:/SFX/Player/TorpedoImpact
+  <RandomGrunt>k__BackingField:
+    Guid:
+      Data1: -4646401
+      Data2: 1267454128
+      Data3: 1571621015
+      Data4: 1023603660
+    Path: event:/SFX/Player/RandomGrunt
   <LoadTorpedo>k__BackingField:
     Guid:
       Data1: -1075513862

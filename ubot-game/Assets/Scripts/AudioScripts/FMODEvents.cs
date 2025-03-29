@@ -11,6 +11,13 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField] public EventReference PickUp { get; private set; }
 
+    [field: SerializeField] public EventReference NukeAlarm { get; private set; }
+
+    [field: SerializeField] public EventReference NukeBlowUp { get; private set; }
+
+    [field: SerializeField] public EventReference TorpedoImpact { get; private set; }
+
+    [field: SerializeField] public EventReference RandomGrunt { get; private set; }
 
 
 
@@ -38,10 +45,12 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField] public EventReference ChangeThrust { get; private set; }
 
+   
 
-    
 
-    
+
+
+
 
 
     [field: Header("UISFX")]
