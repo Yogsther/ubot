@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{5e8db155-a5ea-48e0-9362-28e97a12c166}">
 		<property name="assetPath">
-			<value>DefenderStation/LoadingTorpedo.wav</value>
+			<value>Stations/LoadingTorpedo.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>96</value>

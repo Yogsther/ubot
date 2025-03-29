@@ -16,7 +16,21 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField] public EventReference LoadTorpedo { get; private set; }
 
+    [field: SerializeField] public EventReference TorpedoFired { get; private set; }
 
+    [field: SerializeField] public EventReference InitiateNuke { get; private set; }
+
+    [field: SerializeField] public EventReference RadarBeep { get; private set; }
+
+    [field: SerializeField] public EventReference BallastWheel { get; private set; }
+
+    [field: SerializeField] public EventReference FaxShort { get; private set; }
+
+    [field: SerializeField] public EventReference FaxMedium { get; private set; }
+
+    [field: SerializeField] public EventReference FaxLong { get; private set; }
+
+    [field: SerializeField] public EventReference RequestFax { get; private set; }
 
 
     [field: Header("ObjectSFX")]

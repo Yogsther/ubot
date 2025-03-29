@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Walk>k__BackingField:
     Guid:
-      Data1: 1512831374
-      Data2: 1135411399
-      Data3: 1618759304
-      Data4: -1963231582
+      Data1: -955471740
+      Data2: 1321367023
+      Data3: -1505945153
+      Data4: 319564003
     Path: event:/SFX/Player/Walk
   <LoadTorpedo>k__BackingField:
     Guid:
@@ -58,6 +58,62 @@ MonoBehaviour:
       Data3: -239074418
       Data4: 1582234740
     Path: event:/SFX/Stations/LoadTorpedo
+  <TorpedoFired>k__BackingField:
+    Guid:
+      Data1: -1078894661
+      Data2: 1144113838
+      Data3: -1433193565
+      Data4: -849452052
+    Path: event:/SFX/Stations/TorpedoFired
+  <InitiateNuke>k__BackingField:
+    Guid:
+      Data1: 1351520801
+      Data2: 1284648765
+      Data3: 1344175800
+      Data4: 974065924
+    Path: event:/SFX/Stations/InitiateNuke
+  <RadarBeep>k__BackingField:
+    Guid:
+      Data1: -1324704028
+      Data2: 1239247955
+      Data3: 1287441072
+      Data4: 1083402785
+    Path: event:/SFX/Stations/RadarBeep
+  <BallastWheel>k__BackingField:
+    Guid:
+      Data1: -1874476438
+      Data2: 1151583930
+      Data3: -331798890
+      Data4: -60130178
+    Path: event:/SFX/Stations/BallastWheel
+  <FaxShort>k__BackingField:
+    Guid:
+      Data1: -1940091575
+      Data2: 1324990063
+      Data3: 2008273799
+      Data4: 807932666
+    Path: event:/SFX/Stations/FaxShort
+  <FaxMedium>k__BackingField:
+    Guid:
+      Data1: -981522298
+      Data2: 1289109888
+      Data3: 154285731
+      Data4: -1708008941
+    Path: event:/SFX/Stations/FaxMedium
+  <FaxLong>k__BackingField:
+    Guid:
+      Data1: -665489093
+      Data2: 1146978490
+      Data3: -967035982
+      Data4: 1051434894
+    Path: event:/SFX/Stations/FaxLong
+  <RequestFax>k__BackingField:
+    Guid:
+      Data1: 1822229224
+      Data2: 1104095044
+      Data3: 380092316
+      Data4: -1909529082
+    Path: event:/SFX/Stations/RequestFax
   <NeutralClick>k__BackingField:
     Guid:
       Data1: 1954960565

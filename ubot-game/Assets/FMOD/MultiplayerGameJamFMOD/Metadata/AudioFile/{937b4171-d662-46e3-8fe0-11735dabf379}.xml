@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{937b4171-d662-46e3-8fe0-11735dabf379}">
+		<property name="assetPath">
+			<value>Stations/FaxPrinter(Shortest).wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>14.503447916666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f99a91a6-14be-4322-81a6-a4a685c12db9}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -108,6 +108,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6454139331881517735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/TorpedoFired
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/TorpedoFired
+  Guid:
+    Data1: -1078894661
+    Data2: 1144113838
+    Data3: -1433193565
+    Data4: -849452052
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5901304722538066578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,19 +196,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Player/Walk
   Guid:
-    Data1: 1512831374
-    Data2: 1135411399
-    Data3: 1618759304
-    Data4: -1963231582
+    Data1: -955471740
+    Data2: 1321367023
+    Data3: -1505945153
+    Data4: 319564003
   Banks:
   - {fileID: -671920187902023065}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 620
+  Length: 0
+--- !u!114 &-4098188366584785794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/FaxLong
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/FaxLong
+  Guid:
+    Data1: -665489093
+    Data2: 1146978490
+    Data3: -967035982
+    Data4: 1051434894
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2384189380835090326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +256,60 @@ MonoBehaviour:
   - Name: Desktop
     Value: 506
   Exists: 1
+--- !u!114 &-1385809922578619242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/InitiateNuke
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/InitiateNuke
+  Guid:
+    Data1: 1351520801
+    Data2: 1284648765
+    Data3: 1344175800
+    Data4: 974065924
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1089163060205830335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/RadarBeep
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/RadarBeep
+  Guid:
+    Data1: -1324704028
+    Data2: 1239247955
+    Data3: 1287441072
+    Data4: 1083402785
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-671920187902023065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,10 +325,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638788541133371203
+  lastModified: 638788613931894968
   FileSizes:
   - Name: Desktop
-    Value: 256224
+    Value: 1054720
   Exists: 1
 --- !u!114 &-463238752861014642
 MonoBehaviour:
@@ -257,7 +365,7 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638788541133286864
+  lastModified: 638788542065751836
   FileSizes:
   - Name: Desktop
     Value: 711616
@@ -304,16 +412,23 @@ MonoBehaviour:
   - {fileID: -5901304722538066578}
   - {fileID: 6467348930026526319}
   - {fileID: 4382090173352369569}
-  - {fileID: 7716525024464373741}
   - {fileID: -5610388596303833276}
   - {fileID: 9207297113029045457}
   - {fileID: 4649181807074149053}
+  - {fileID: -6454139331881517735}
+  - {fileID: -1089163060205830335}
+  - {fileID: 8256025601472840454}
+  - {fileID: -4098188366584785794}
+  - {fileID: 235173592939069891}
+  - {fileID: 6501151390181021081}
+  - {fileID: 2715167084730075417}
+  - {fileID: -1385809922578619242}
   EditorParameters: []
   MasterBanks:
   - {fileID: 9099401297484674326}
   StringsBanks:
   - {fileID: 3550787641317174700}
-  cacheTime: 638788541133371203
+  cacheTime: 638788613931894968
   cacheVersion: 131846
 --- !u!114 &37250068163349981
 MonoBehaviour:
@@ -335,6 +450,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 711616
   Exists: 1
+--- !u!114 &235173592939069891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/FaxShort
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/FaxShort
+  Guid:
+    Data1: -1940091575
+    Data2: 1324990063
+    Data3: 2008273799
+    Data4: 807932666
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1603849905964655881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +504,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 400
+--- !u!114 &2715167084730075417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/RequestFax
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/RequestFax
+  Guid:
+    Data1: 1822229224
+    Data2: 1104095044
+    Data3: 380092316
+    Data4: -1909529082
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3550787641317174700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,10 +546,10 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638788541133323589
+  lastModified: 638788613915063740
   FileSizes:
   - Name: Desktop
-    Value: 1244
+    Value: 1554
   Exists: 1
 --- !u!114 &4382090173352369569
 MonoBehaviour:
@@ -517,6 +686,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &6501151390181021081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Stations/FaxMedium
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Stations/FaxMedium
+  Guid:
+    Data1: -981522298
+    Data2: 1289109888
+    Data3: 154285731
+    Data4: -1708008941
+  Banks:
+  - {fileID: -671920187902023065}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7517700507588290180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +733,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 506
   Exists: 1
---- !u!114 &7716525024464373741
+--- !u!114 &8256025601472840454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -547,23 +743,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Player/Run
+  m_Name: event:/SFX/Stations/BallastWheel
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Player/Run
+  Path: event:/SFX/Stations/BallastWheel
   Guid:
-    Data1: -743246966
-    Data2: 1203178111
-    Data3: 2114614928
-    Data4: -2001305977
+    Data1: -1874476438
+    Data2: 1151583930
+    Data3: -331798890
+    Data4: -60130178
   Banks:
   - {fileID: -671920187902023065}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 400
+  Length: 0
 --- !u!114 &9099401297484674326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +775,7 @@ MonoBehaviour:
   Path: Assets/FMOD/MultiplayerGameJamFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638788541133301977
+  lastModified: 638788613915048682
   FileSizes:
   - Name: Desktop
     Value: 1074
