@@ -28,8 +28,6 @@ namespace Quantum
 				direction = direction.Normalized;
 				var hit = f.Physics3D.Raycast(from, direction, f.Config.InteractDistance, f.Config.InteractableMask);
 
-				f.Events.OnGizmoLine(from, from + direction * f.Config.InteractDistance);
-
 				if (hit.HasValue)
 				{
 					var entity = hit.Value.Entity;
@@ -37,6 +35,12 @@ namespace Quantum
 					{
 						f.Signals.OnCarry(entity, filter.Entity);
 					}
+
+					var hitPosition = hit.Value.Point;
+					f.Events.OnGizmoLine(from, hitPosition);
+				} else
+				{
+					f.Events.OnGizmoLine(from, from + direction * f.Config.InteractDistance);
 				}
 				
 			}

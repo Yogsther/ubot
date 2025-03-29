@@ -12,6 +12,12 @@ namespace Quantum
 				return;
 
 			var carryable = f.Unsafe.GetPointer<Carryable>(item);
+
+			if(carryable->Player != EntityRef.None)
+			{
+				OnDrop(f, carryable->Player);
+			}
+
 			carryable->Player = playerEntity;
 
 			var player = f.Unsafe.GetPointer<Player>(playerEntity);

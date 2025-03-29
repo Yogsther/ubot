@@ -533,6 +533,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 2564075085403342844, guid: 2066260eeb861e94f8e82d162b3d74c9, type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3492725443177995772, guid: 2066260eeb861e94f8e82d162b3d74c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

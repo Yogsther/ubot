@@ -29,7 +29,7 @@ MonoBehaviour:
     Z:
       RawValue: 17498
   InteractDistance:
-    RawValue: 3271557
+    RawValue: 196608
   SubmarinePrototype:
     Id:
       Value: 1335929916265329953
