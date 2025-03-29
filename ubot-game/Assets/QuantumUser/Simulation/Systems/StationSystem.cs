@@ -63,7 +63,7 @@ namespace Quantum
 
 				if(f.Unsafe.TryGetPointer(filter.Entity, out ThrustStation* thrustStation))
 				{
-					var moveDirection = input.MoveDirection.XOY;
+					var moveDirection = input.MoveDirection;
 					thrustStation->Throttle += moveDirection.Y * thrustStation->ThrottleSpeed * f.DeltaTime;
 					thrustStation->Throttle = FPMath.Clamp(thrustStation->Throttle, -1, 1);
 					submarine->Throttle = thrustStation->Throttle;
