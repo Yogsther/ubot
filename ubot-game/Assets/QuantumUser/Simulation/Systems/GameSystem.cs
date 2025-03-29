@@ -38,6 +38,7 @@ namespace Quantum
 			if (f.Unsafe.TryGetPointer(submarineEntity, out Transform3D* transform))
 			{
 				transform->Position = position;
+				transform->LookAt(FPVector3.Zero);
 			}
 		}
 	}
