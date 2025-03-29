@@ -15,9 +15,10 @@ namespace Quantum
 		{
 			var playerEntity = f.Create(f.Config.PlayerPrototype);
 
-			PlayerFields fields = new PlayerFields()
+			Player fields = new Player()
 			{
-				Owner = player,
+				PlayerRef = player,
+				JumpForce = 10,
 			};
 
 			f.Add(playerEntity, fields);

@@ -26,6 +26,8 @@ namespace Quantum
 
 			BasePlayerInput input = *frame.GetPlayerInput(player->PlayerRef);
 
+			Log.Debug($"PlayerSystem.Update: {player->PlayerRef} {input.MoveDirection.XOY} {input.LookRotationDelta}");
+
 			kcc->AddLookRotation(input.LookRotationDelta.X, input.LookRotationDelta.Y);
 			kcc->SetInputDirection(kcc->Data.TransformRotation * input.MoveDirection.XOY);
 

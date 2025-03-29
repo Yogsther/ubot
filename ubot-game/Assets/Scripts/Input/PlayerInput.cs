@@ -11,19 +11,6 @@ public class PlayerInput : MonoBehaviour
 	private bool _resetAccumulatedInput;
 	private int _lastAccumulateFrame;
 	private PolledInput[] _polledInputs = new PolledInput[20];
-	private float _jumpTime;
-
-	Vector2 moveInput = Vector2.zero;
-
-	public void OnMove(InputAction.CallbackContext context)
-	{
-		moveInput = context.ReadValue<Vector2>();
-	}
-
-	public void OnLook(InputAction.CallbackContext context)
-	{
-		moveInput = context.ReadValue<Vector2>();
-	}
 
 	private void Update()
 	{
@@ -140,6 +127,7 @@ public class PlayerInput : MonoBehaviour
 		_lookRotationAccumulator.Add(consumeLookRotation - pollLookRotation.ToUnityVector2());
 
 		_accumulatedInput.LookRotationDelta = pollLookRotation;
+
 
 		_polledInputs[callback.Frame % _polledInputs.Length] = new PolledInput() { Frame = callback.Frame, Input = _accumulatedInput };
 		callback.SetInput(_accumulatedInput, DeterministicInputFlags.Repeatable);
