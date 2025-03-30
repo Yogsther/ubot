@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3968229971927541043}
   - component: {fileID: 3496779619496736495}
   - component: {fileID: 8431702859018435098}
-  - component: {fileID: 466980114192442460}
+  - component: {fileID: 5878685237005223745}
   m_Layer: 6
   m_Name: Torpedo
   m_TagString: Untagged
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prototype:
     _empty_prototype_dummy_field_: 0
---- !u!114 &466980114192442460
+--- !u!114 &5878685237005223745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012124816839374536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c98cb1b9c1cc08a41a2ea4077f51b3d2, type: 3}
+  m_Script: {fileID: 11500000, guid: e2167a7170db41d4fbe1e7089f2fee95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Prototype:
