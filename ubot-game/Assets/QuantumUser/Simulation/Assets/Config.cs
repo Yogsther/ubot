@@ -10,5 +10,6 @@ namespace Quantum
 		public FP InteractDistance;
 		public AssetRef<EntityPrototype> SubmarinePrototype;
 		public AssetRef<EntityPrototype> TorpedoProjectilePrototype;
+		public bool SameTeam;
 	}
 }
