@@ -426,8 +426,10 @@ namespace Quantum.Prototypes {
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.TelescopeStation))]
   public unsafe partial class TelescopeStationPrototype : ComponentPrototype<Quantum.TelescopeStation> {
-    [HideInInspector()]
-    public Int32 _empty_prototype_dummy_field_;
+    public FP Rotation;
+    public FP MaxRotation;
+    public FP RotationSpeed;
+    public FPVector3 CenterRotation;
     partial void MaterializeUser(Frame frame, ref Quantum.TelescopeStation result, in PrototypeMaterializationContext context);
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.TelescopeStation component = default;
@@ -435,6 +437,10 @@ namespace Quantum.Prototypes {
         return f.Set(entity, component) == SetResult.ComponentAdded;
     }
     public void Materialize(Frame frame, ref Quantum.TelescopeStation result, in PrototypeMaterializationContext context = default) {
+        result.Rotation = this.Rotation;
+        result.MaxRotation = this.MaxRotation;
+        result.RotationSpeed = this.RotationSpeed;
+        result.CenterRotation = this.CenterRotation;
         MaterializeUser(frame, ref result, in context);
     }
   }

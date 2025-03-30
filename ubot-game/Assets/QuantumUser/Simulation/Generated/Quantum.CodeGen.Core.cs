@@ -1263,22 +1263,25 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Submarine : Quantum.IComponent {
-    public const Int32 SIZE = 48;
+    public const Int32 SIZE = 56;
     public const Int32 ALIGNMENT = 8;
     [FieldOffset(8)]
     [Header("Stats")]
     public FP Acceleration;
-    [FieldOffset(40)]
+    [FieldOffset(48)]
     public FP TurnSpeed;
     [FieldOffset(16)]
     [ExcludeFromPrototype()]
     public FP Steering;
-    [FieldOffset(32)]
+    [FieldOffset(40)]
     [ExcludeFromPrototype()]
     public FP Throttle;
     [FieldOffset(24)]
     [ExcludeFromPrototype()]
     public FP TargetDepth;
+    [FieldOffset(32)]
+    [ExcludeFromPrototype()]
+    public FP TelescopeRotation;
     [FieldOffset(0)]
     [ExcludeFromPrototype()]
     public QBoolean HasLoadedTorpedo;
@@ -1290,6 +1293,7 @@ namespace Quantum {
         hash = hash * 31 + Steering.GetHashCode();
         hash = hash * 31 + Throttle.GetHashCode();
         hash = hash * 31 + TargetDepth.GetHashCode();
+        hash = hash * 31 + TelescopeRotation.GetHashCode();
         hash = hash * 31 + HasLoadedTorpedo.GetHashCode();
         return hash;
       }
@@ -1300,6 +1304,7 @@ namespace Quantum {
         FP.Serialize(&p->Acceleration, serializer);
         FP.Serialize(&p->Steering, serializer);
         FP.Serialize(&p->TargetDepth, serializer);
+        FP.Serialize(&p->TelescopeRotation, serializer);
         FP.Serialize(&p->Throttle, serializer);
         FP.Serialize(&p->TurnSpeed, serializer);
     }
@@ -1340,18 +1345,32 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct TelescopeStation : Quantum.IComponent {
-    public const Int32 SIZE = 4;
-    public const Int32 ALIGNMENT = 4;
+    public const Int32 SIZE = 48;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(8)]
+    public FP Rotation;
     [FieldOffset(0)]
-    private fixed Byte _alignment_padding_[4];
+    public FP MaxRotation;
+    [FieldOffset(16)]
+    public FP RotationSpeed;
+    [FieldOffset(24)]
+    public FPVector3 CenterRotation;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 7823;
+        hash = hash * 31 + Rotation.GetHashCode();
+        hash = hash * 31 + MaxRotation.GetHashCode();
+        hash = hash * 31 + RotationSpeed.GetHashCode();
+        hash = hash * 31 + CenterRotation.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (TelescopeStation*)ptr;
+        FP.Serialize(&p->MaxRotation, serializer);
+        FP.Serialize(&p->Rotation, serializer);
+        FP.Serialize(&p->RotationSpeed, serializer);
+        FPVector3.Serialize(&p->CenterRotation, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]

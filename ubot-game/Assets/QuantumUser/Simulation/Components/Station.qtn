@@ -22,7 +22,12 @@ component Torpedo{
 	EntityRef LoadedIn;
 }
 
-component TelescopeStation{}
+component TelescopeStation{
+	FP Rotation;
+	FP MaxRotation;
+	FP RotationSpeed;
+	FPVector3 CenterRotation;
+}
 
 component WeaponLoaderStation {
 	FP LoadingSpeed;

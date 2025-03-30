@@ -11,6 +11,7 @@ component Submarine
     [ExcludeFromPrototype] FP Steering;
     [ExcludeFromPrototype] FP Throttle;
     [ExcludeFromPrototype] FP TargetDepth;
+    [ExcludeFromPrototype] FP TelescopeRotation;
 
     [ExcludeFromPrototype] bool HasLoadedTorpedo;
 }

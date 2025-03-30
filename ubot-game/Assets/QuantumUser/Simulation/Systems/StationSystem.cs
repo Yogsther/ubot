@@ -120,6 +120,20 @@ namespace Quantum
 					submarine->Steering = steerStation->Steering;
 				}
 
+				if(f.Unsafe.TryGetPointer(filter.Entity, out TelescopeStation* telescopeStation))
+				{
+					var moveDirection = input.MoveDirection;
+					telescopeStation->Rotation += moveDirection.X * telescopeStation->RotationSpeed * f.DeltaTime;
+					telescopeStation->Rotation = FPMath.Clamp(telescopeStation->Rotation, -telescopeStation->MaxRotation, telescopeStation->MaxRotation);
+
+					var stationTransform = f.Unsafe.GetPointer<Transform3D>(filter.Entity);
+
+					var centerRotation = telescopeStation->CenterRotation;
+					stationTransform->Rotation = FPQuaternion.Euler(centerRotation.X, centerRotation.Y + telescopeStation->Rotation, centerRotation.Z);
+
+					submarine->TelescopeRotation = telescopeStation->Rotation;
+				}
+
 				if (f.Unsafe.TryGetPointer(filter.Entity, out ThrustStation* thrustStation))
 				{
 					var moveDirection = input.MoveDirection;
