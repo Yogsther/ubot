@@ -29,7 +29,6 @@ namespace Quantum
 
 		public void OnSubmarineDamaged(Frame f, EntityRef submarineEntity)
 		{
-
 			f.Events.SubmarineDamaged(f.Unsafe.GetPointer<TeamLink>(submarineEntity)->Team);
 		}
 

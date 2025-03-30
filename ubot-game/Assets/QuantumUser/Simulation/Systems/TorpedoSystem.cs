@@ -38,7 +38,8 @@ namespace Quantum
 
 			f.Destroy(info.Entity);
 			f.Signals.OnSubmarineDamaged(info.Other);
-			
+
+			Log.Debug("Submarine hit!");
 		}
 
 		public override void Update(Frame f, ref Filter filter)
@@ -63,11 +64,9 @@ namespace Quantum
 			teamLink.Team = team;
 
 			f.Add(torpedoEntity, teamLink);
-			physicsCollider->Layer = 9; // Exterior
 			physicsBody->GravityScale = FP._0;
 
 			transform->Teleport(f, position, FPQuaternion.LookRotation(FPVector3.Up, direction));
-
 			torpedo->IsFired = true;
 		}
 
