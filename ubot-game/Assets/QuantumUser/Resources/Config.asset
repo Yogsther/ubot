@@ -33,3 +33,6 @@ MonoBehaviour:
   SubmarinePrototype:
     Id:
       Value: 1335929916265329953
+  TorpedoProjectilePrototype:
+    Id:
+      Value: 1466129755564189990

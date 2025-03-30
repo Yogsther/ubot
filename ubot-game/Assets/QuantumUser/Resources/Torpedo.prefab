@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3496779619496736495}
   - component: {fileID: 8431702859018435098}
   - component: {fileID: 5878685237005223745}
+  - component: {fileID: 1636556347514483730}
   m_Layer: 6
   m_Name: Torpedo
   m_TagString: Untagged
@@ -184,7 +185,7 @@ MonoBehaviour:
             RawValue: 0
         UserTag: 0
         IsSetFromSourceCollider: 0
-    LayerSource: 0
+    LayerSource: 1
     Layer: 6
     CallbackFlags:
       Value: 0
@@ -412,7 +413,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prototype:
+    Acceleration:
+      RawValue: 6553600
     LoadedIn: {fileID: 0}
+    IsFired:
+      Value: 0
+--- !u!114 &1636556347514483730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012124816839374536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebe3d16fea59964caa24337963c4467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 5265849296580630150}
 --- !u!1001 &5032042340351536087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -493,5 +511,10 @@ PrefabInstance:
 --- !u!4 &4782786131720506428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd4013c619104df4e9dd8686d10d79a3, type: 3}
+  m_PrefabInstance: {fileID: 5032042340351536087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5265849296580630150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd4013c619104df4e9dd8686d10d79a3, type: 3}
   m_PrefabInstance: {fileID: 5032042340351536087}
   m_PrefabAsset: {fileID: 0}

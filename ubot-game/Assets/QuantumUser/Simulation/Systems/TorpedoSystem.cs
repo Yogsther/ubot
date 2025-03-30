@@ -17,7 +17,7 @@ namespace Quantum
 			{
 				if (subTeamLink->Team == firingTeam)
 				{
-					var subPosition = subTransform->Position + (subTransform->Forward * FP._10);
+					var subPosition = subTransform->Position + (subTransform->Forward * FP._100);
 					var subDirection = subTransform->Forward;
 					
 					SpawnTorpedo(f, subPosition, subDirection, firingTeam);
@@ -48,13 +48,14 @@ namespace Quantum
 				return;
 			}
 
-			filter.PhysicsBody->AddForce(filter.Transform->Forward * filter.Torpedo->Acceleration * f.DeltaTime);
+			filter.PhysicsBody->AddForce(filter.Transform->Up * filter.Torpedo->Acceleration * f.DeltaTime);
 		}
 
 		private void SpawnTorpedo(Frame f, FPVector3 position, FPVector3 direction, TeamRef team)
 		{
 			var torpedoEntity = f.Create(f.Config.TorpedoProjectilePrototype);
 			var torpedo = f.Unsafe.GetPointer<Torpedo>(torpedoEntity);
+			var physicsCollider = f.Unsafe.GetPointer<PhysicsCollider3D>(torpedoEntity);
 			var physicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(torpedoEntity);
 			var transform = f.Unsafe.GetPointer<Transform3D>(torpedoEntity);
 
@@ -62,11 +63,10 @@ namespace Quantum
 			teamLink.Team = team;
 
 			f.Add(torpedoEntity, teamLink);
-
+			physicsCollider->Layer = 9; // Exterior
 			physicsBody->GravityScale = FP._0;
 
-			transform->Position = position;
-			transform->Rotation = FPQuaternion.LookRotation(direction);
+			transform->Teleport(f, position, FPQuaternion.LookRotation(FPVector3.Up, direction));
 
 			torpedo->IsFired = true;
 		}

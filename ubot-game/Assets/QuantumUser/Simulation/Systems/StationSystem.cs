@@ -22,6 +22,7 @@ namespace Quantum
 					if (submarine->HasLoadedTorpedo)
 					{
 						Log.Debug("Fire!"); // TODO!
+						f.Signals.OnTorpedoFired(team->Team);
 						submarine->HasLoadedTorpedo = false;
 						weaponFireStation->CanFire = false;
 					}
