@@ -151,13 +151,13 @@ namespace Quantum
 						{
 							submarine->HasLoadedTorpedo = true;
 
-							var weaponsFireStations = f.Filter<WeaponFireStation, TeamLink>();
-							while (weaponsFireStations.NextUnsafe(out _, out WeaponFireStation* fireStation, out TeamLink* fireStationTeamLink))
+							var weaponsFireStations = f.Filter<WeaponFireStation, Station>();
+							while (weaponsFireStations.NextUnsafe(out _, out WeaponFireStation* fireStation, out Station* station))
 							{
+								var fireStationTeamLink = f.Unsafe.GetPointer<TeamLink>(station->Room);
 								if (fireStationTeamLink->Team == teamLink->Team)
 								{
 									fireStation->CanFire = true;
-									break;
 								}
 							}
 
