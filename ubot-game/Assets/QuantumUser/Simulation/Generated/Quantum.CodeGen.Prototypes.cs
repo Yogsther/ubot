@@ -486,8 +486,8 @@ namespace Quantum.Prototypes {
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.WeaponFireStation))]
   public unsafe partial class WeaponFireStationPrototype : ComponentPrototype<Quantum.WeaponFireStation> {
-    [HideInInspector()]
-    public Int32 _empty_prototype_dummy_field_;
+    public QBoolean CanFire;
+    public QBoolean IsOpen;
     partial void MaterializeUser(Frame frame, ref Quantum.WeaponFireStation result, in PrototypeMaterializationContext context);
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.WeaponFireStation component = default;
@@ -495,6 +495,8 @@ namespace Quantum.Prototypes {
         return f.Set(entity, component) == SetResult.ComponentAdded;
     }
     public void Materialize(Frame frame, ref Quantum.WeaponFireStation result, in PrototypeMaterializationContext context = default) {
+        result.CanFire = this.CanFire;
+        result.IsOpen = this.IsOpen;
         MaterializeUser(frame, ref result, in context);
     }
   }

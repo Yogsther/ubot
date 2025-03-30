@@ -44,7 +44,6 @@ namespace Quantum
 
 					if(f.Unsafe.TryGetPointer(entity, out Station* station))
 					{
-						Log.Debug("Enter station...");
 						f.Signals.OnPlayerEnterStation(filter.Entity, entity);
 					}
 

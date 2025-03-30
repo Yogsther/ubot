@@ -11,6 +11,26 @@ namespace Quantum
 			var player = f.Unsafe.GetPointer<Player>(playerEntity);
 			var station = f.Unsafe.GetPointer<Station>(stationEntity);
 
+			if (f.Unsafe.TryGetPointer<WeaponFireStation>(stationEntity, out var weaponFireStation))
+			{
+				var team = f.Unsafe.GetPointer<TeamLink>(station->Room);
+				var submarineEntity = f.GetSubmarine(team->Team);
+				var submarine = f.Unsafe.GetPointer<Submarine>(submarineEntity);
+
+				if (weaponFireStation->IsOpen)
+				{
+					if (submarine->HasLoadedTorpedo)
+					{
+						Log.Debug("Fire!"); // TODO!
+						submarine->HasLoadedTorpedo = false;
+						weaponFireStation->CanFire = false;
+					}
+				}
+
+				weaponFireStation->IsOpen = !weaponFireStation->IsOpen;
+				return;
+			}
+
 			if (f.Unsafe.TryGetPointer<WeaponLoaderStation>(stationEntity, out WeaponLoaderStation* weaponLoaderStation))
 			{
 				if (f.Unsafe.TryGetPointer<Torpedo>(player->CurrentlyCarrying, out Torpedo* torpedo))
@@ -53,8 +73,6 @@ namespace Quantum
 
 			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
 			kcc->SetActive(false);
-
-
 
 			TrackPlayerToStation(f, stationEntity);
 		}
@@ -132,6 +150,17 @@ namespace Quantum
 						else if (weaponLoaderStation->LoadingProgress > 1)
 						{
 							submarine->HasLoadedTorpedo = true;
+
+							var weaponsFireStations = f.Filter<WeaponFireStation, TeamLink>();
+							while (weaponsFireStations.NextUnsafe(out _, out WeaponFireStation* fireStation, out TeamLink* fireStationTeamLink))
+							{
+								if (fireStationTeamLink->Team == teamLink->Team)
+								{
+									fireStation->CanFire = true;
+									break;
+								}
+							}
+
 							weaponLoaderStation->LoadingProgress = 0;
 							f.Destroy(weaponLoaderStation->CurrentTorpedo);
 							weaponLoaderStation->CurrentTorpedo = EntityRef.None;

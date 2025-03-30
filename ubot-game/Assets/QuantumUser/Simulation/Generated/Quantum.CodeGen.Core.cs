@@ -1412,18 +1412,24 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct WeaponFireStation : Quantum.IComponent {
-    public const Int32 SIZE = 4;
+    public const Int32 SIZE = 8;
     public const Int32 ALIGNMENT = 4;
     [FieldOffset(0)]
-    private fixed Byte _alignment_padding_[4];
+    public QBoolean CanFire;
+    [FieldOffset(4)]
+    public QBoolean IsOpen;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 8581;
+        hash = hash * 31 + CanFire.GetHashCode();
+        hash = hash * 31 + IsOpen.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (WeaponFireStation*)ptr;
+        QBoolean.Serialize(&p->CanFire, serializer);
+        QBoolean.Serialize(&p->IsOpen, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]
