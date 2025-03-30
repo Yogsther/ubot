@@ -10,8 +10,15 @@ namespace Quantum
         [SerializeField] private RenderTexture defenderTelescopeViewTexture;
 
         public override void OnActivate(Frame frame)
-        {
-            telescopeCamera.targetTexture = frame.Unsafe.GetPointer<TeamLink>(EntityRef)->Team == TeamRef.Attacker ? attackerTelescopeViewTexture : defenderTelescopeViewTexture;
+		{
+			
+			telescopeCamera.targetTexture = frame.Unsafe.GetPointer<TeamLink>(EntityRef)->Team == TeamRef.Attacker ? attackerTelescopeViewTexture : defenderTelescopeViewTexture;
         }
-    }
+
+		public override void OnUpdateView()
+		{
+			Submarine submarine = GetPredictedQuantumComponent<Submarine>();
+			telescopeCamera.transform.localRotation = Quaternion.Euler(0, submarine.TelescopeRotation.AsFloat, 0);
+		}
+	}
 }
