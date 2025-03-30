@@ -11,6 +11,11 @@ namespace Quantum
 
 			var player = f.Unsafe.GetPointer<Player>(playerEntity);
 
+			if(f.Unsafe.TryGetPointer<Torpedo>(item, out Torpedo* torpedo))
+			{
+				if (torpedo->LoadedIn.IsValid) return;
+			}
+
 			if (player->CurrentlyCarrying.IsValid) return;
 			if (player->CurrentStation.IsValid) return;
 

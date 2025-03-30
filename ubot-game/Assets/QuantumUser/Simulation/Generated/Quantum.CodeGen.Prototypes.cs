@@ -424,6 +424,21 @@ namespace Quantum.Prototypes {
     }
   }
   [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.TelescopeStation))]
+  public unsafe partial class TelescopeStationPrototype : ComponentPrototype<Quantum.TelescopeStation> {
+    [HideInInspector()]
+    public Int32 _empty_prototype_dummy_field_;
+    partial void MaterializeUser(Frame frame, ref Quantum.TelescopeStation result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.TelescopeStation component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.TelescopeStation result, in PrototypeMaterializationContext context = default) {
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.TerminalStation))]
   public unsafe partial class TerminalStationPrototype : ComponentPrototype<Quantum.TerminalStation> {
     [HideInInspector()]
@@ -453,6 +468,57 @@ namespace Quantum.Prototypes {
         result.Throttle = this.Throttle;
         result.ThrottleSpeed = this.ThrottleSpeed;
         MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.Torpedo))]
+  public unsafe class TorpedoPrototype : ComponentPrototype<Quantum.Torpedo> {
+    public MapEntityId LoadedIn;
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.Torpedo component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.Torpedo result, in PrototypeMaterializationContext context = default) {
+        PrototypeValidator.FindMapEntity(this.LoadedIn, in context, out result.LoadedIn);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.WeaponFireStation))]
+  public unsafe partial class WeaponFireStationPrototype : ComponentPrototype<Quantum.WeaponFireStation> {
+    [HideInInspector()]
+    public Int32 _empty_prototype_dummy_field_;
+    partial void MaterializeUser(Frame frame, ref Quantum.WeaponFireStation result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.WeaponFireStation component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.WeaponFireStation result, in PrototypeMaterializationContext context = default) {
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.WeaponLoaderStation))]
+  public unsafe class WeaponLoaderStationPrototype : ComponentPrototype<Quantum.WeaponLoaderStation> {
+    public FP LoadingSpeed;
+    public FPVector3 WeaponRotation;
+    public FPVector3 WeaponPositionFrom;
+    public FPVector3 WeaponPositionTo;
+    public MapEntityId CurrentTorpedo;
+    public FP LoadingProgress;
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.WeaponLoaderStation component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.WeaponLoaderStation result, in PrototypeMaterializationContext context = default) {
+        result.LoadingSpeed = this.LoadingSpeed;
+        result.WeaponRotation = this.WeaponRotation;
+        result.WeaponPositionFrom = this.WeaponPositionFrom;
+        result.WeaponPositionTo = this.WeaponPositionTo;
+        PrototypeValidator.FindMapEntity(this.CurrentTorpedo, in context, out result.CurrentTorpedo);
+        result.LoadingProgress = this.LoadingProgress;
     }
   }
 }

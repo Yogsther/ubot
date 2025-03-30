@@ -151,6 +151,38 @@ namespace Quantum.Prototypes.Unity {
       return result;
     }
   }
+  [System.SerializableAttribute()]
+  public unsafe partial class TorpedoPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.TorpedoPrototype> {
+    public Quantum.QuantumEntityPrototype LoadedIn;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.TorpedoPrototype prototype);
+    public override Quantum.Prototypes.TorpedoPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.TorpedoPrototype();
+      converter.Convert(this.LoadedIn, out result.LoadedIn);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  public unsafe partial class WeaponLoaderStationPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.WeaponLoaderStationPrototype> {
+    public FP LoadingSpeed;
+    public FPVector3 WeaponRotation;
+    public FPVector3 WeaponPositionFrom;
+    public FPVector3 WeaponPositionTo;
+    public Quantum.QuantumEntityPrototype CurrentTorpedo;
+    public FP LoadingProgress;
+    partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.WeaponLoaderStationPrototype prototype);
+    public override Quantum.Prototypes.WeaponLoaderStationPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.WeaponLoaderStationPrototype();
+      converter.Convert(this.LoadingSpeed, out result.LoadingSpeed);
+      converter.Convert(this.WeaponRotation, out result.WeaponRotation);
+      converter.Convert(this.WeaponPositionFrom, out result.WeaponPositionFrom);
+      converter.Convert(this.WeaponPositionTo, out result.WeaponPositionTo);
+      converter.Convert(this.CurrentTorpedo, out result.CurrentTorpedo);
+      converter.Convert(this.LoadingProgress, out result.LoadingProgress);
+      ConvertUser(converter, ref result);
+      return result;
+    }
+  }
 }
 #pragma warning restore 0109
 #pragma warning restore 1591

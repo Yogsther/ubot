@@ -1263,22 +1263,25 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Submarine : Quantum.IComponent {
-    public const Int32 SIZE = 40;
+    public const Int32 SIZE = 48;
     public const Int32 ALIGNMENT = 8;
-    [FieldOffset(0)]
+    [FieldOffset(8)]
     [Header("Stats")]
     public FP Acceleration;
-    [FieldOffset(32)]
+    [FieldOffset(40)]
     public FP TurnSpeed;
-    [FieldOffset(8)]
-    [ExcludeFromPrototype()]
-    public FP Steering;
-    [FieldOffset(24)]
-    [ExcludeFromPrototype()]
-    public FP Throttle;
     [FieldOffset(16)]
     [ExcludeFromPrototype()]
+    public FP Steering;
+    [FieldOffset(32)]
+    [ExcludeFromPrototype()]
+    public FP Throttle;
+    [FieldOffset(24)]
+    [ExcludeFromPrototype()]
     public FP TargetDepth;
+    [FieldOffset(0)]
+    [ExcludeFromPrototype()]
+    public QBoolean HasLoadedTorpedo;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 19183;
@@ -1287,11 +1290,13 @@ namespace Quantum {
         hash = hash * 31 + Steering.GetHashCode();
         hash = hash * 31 + Throttle.GetHashCode();
         hash = hash * 31 + TargetDepth.GetHashCode();
+        hash = hash * 31 + HasLoadedTorpedo.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (Submarine*)ptr;
+        QBoolean.Serialize(&p->HasLoadedTorpedo, serializer);
         FP.Serialize(&p->Acceleration, serializer);
         FP.Serialize(&p->Steering, serializer);
         FP.Serialize(&p->TargetDepth, serializer);
@@ -1334,6 +1339,22 @@ namespace Quantum {
     }
   }
   [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct TelescopeStation : Quantum.IComponent {
+    public const Int32 SIZE = 4;
+    public const Int32 ALIGNMENT = 4;
+    [FieldOffset(0)]
+    private fixed Byte _alignment_padding_[4];
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 7823;
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (TelescopeStation*)ptr;
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct TerminalStation : Quantum.IComponent {
     public const Int32 SIZE = 4;
     public const Int32 ALIGNMENT = 4;
@@ -1369,6 +1390,78 @@ namespace Quantum {
         var p = (ThrustStation*)ptr;
         FP.Serialize(&p->Throttle, serializer);
         FP.Serialize(&p->ThrottleSpeed, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct Torpedo : Quantum.IComponent {
+    public const Int32 SIZE = 8;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(0)]
+    public EntityRef LoadedIn;
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 19727;
+        hash = hash * 31 + LoadedIn.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (Torpedo*)ptr;
+        EntityRef.Serialize(&p->LoadedIn, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct WeaponFireStation : Quantum.IComponent {
+    public const Int32 SIZE = 4;
+    public const Int32 ALIGNMENT = 4;
+    [FieldOffset(0)]
+    private fixed Byte _alignment_padding_[4];
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 8581;
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (WeaponFireStation*)ptr;
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct WeaponLoaderStation : Quantum.IComponent {
+    public const Int32 SIZE = 96;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(16)]
+    public FP LoadingSpeed;
+    [FieldOffset(72)]
+    public FPVector3 WeaponRotation;
+    [FieldOffset(24)]
+    public FPVector3 WeaponPositionFrom;
+    [FieldOffset(48)]
+    public FPVector3 WeaponPositionTo;
+    [FieldOffset(0)]
+    public EntityRef CurrentTorpedo;
+    [FieldOffset(8)]
+    public FP LoadingProgress;
+    public override Int32 GetHashCode() {
+      unchecked { 
+        var hash = 1123;
+        hash = hash * 31 + LoadingSpeed.GetHashCode();
+        hash = hash * 31 + WeaponRotation.GetHashCode();
+        hash = hash * 31 + WeaponPositionFrom.GetHashCode();
+        hash = hash * 31 + WeaponPositionTo.GetHashCode();
+        hash = hash * 31 + CurrentTorpedo.GetHashCode();
+        hash = hash * 31 + LoadingProgress.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (WeaponLoaderStation*)ptr;
+        EntityRef.Serialize(&p->CurrentTorpedo, serializer);
+        FP.Serialize(&p->LoadingProgress, serializer);
+        FP.Serialize(&p->LoadingSpeed, serializer);
+        FPVector3.Serialize(&p->WeaponPositionFrom, serializer);
+        FPVector3.Serialize(&p->WeaponPositionTo, serializer);
+        FPVector3.Serialize(&p->WeaponRotation, serializer);
     }
   }
   public unsafe partial interface ISignalOnCarry : ISignal {
@@ -1459,10 +1552,14 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<Quantum.SubmarineInterior>();
       BuildSignalsArrayOnComponentAdded<Quantum.TeamLink>();
       BuildSignalsArrayOnComponentRemoved<Quantum.TeamLink>();
+      BuildSignalsArrayOnComponentAdded<Quantum.TelescopeStation>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.TelescopeStation>();
       BuildSignalsArrayOnComponentAdded<Quantum.TerminalStation>();
       BuildSignalsArrayOnComponentRemoved<Quantum.TerminalStation>();
       BuildSignalsArrayOnComponentAdded<Quantum.ThrustStation>();
       BuildSignalsArrayOnComponentRemoved<Quantum.ThrustStation>();
+      BuildSignalsArrayOnComponentAdded<Quantum.Torpedo>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.Torpedo>();
       BuildSignalsArrayOnComponentAdded<Transform2D>();
       BuildSignalsArrayOnComponentRemoved<Transform2D>();
       BuildSignalsArrayOnComponentAdded<Transform2DVertical>();
@@ -1471,6 +1568,10 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<Transform3D>();
       BuildSignalsArrayOnComponentAdded<View>();
       BuildSignalsArrayOnComponentRemoved<View>();
+      BuildSignalsArrayOnComponentAdded<Quantum.WeaponFireStation>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.WeaponFireStation>();
+      BuildSignalsArrayOnComponentAdded<Quantum.WeaponLoaderStation>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.WeaponLoaderStation>();
     }
     partial void SetPlayerInputCodeGen(PlayerRef player, Input input) {
       if ((int)player >= (int)_globals->input.Length) { throw new System.ArgumentOutOfRangeException("player"); }
@@ -1645,16 +1746,20 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum.SubmarineInterior), Quantum.SubmarineInterior.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamLink), Quantum.TeamLink.SIZE);
       typeRegistry.Register(typeof(Quantum.TeamRef), 4);
+      typeRegistry.Register(typeof(Quantum.TelescopeStation), Quantum.TelescopeStation.SIZE);
       typeRegistry.Register(typeof(Quantum.TerminalStation), Quantum.TerminalStation.SIZE);
       typeRegistry.Register(typeof(Quantum.ThrustStation), Quantum.ThrustStation.SIZE);
+      typeRegistry.Register(typeof(Quantum.Torpedo), Quantum.Torpedo.SIZE);
       typeRegistry.Register(typeof(Transform2D), Transform2D.SIZE);
       typeRegistry.Register(typeof(Transform2DVertical), Transform2DVertical.SIZE);
       typeRegistry.Register(typeof(Transform3D), Transform3D.SIZE);
       typeRegistry.Register(typeof(View), View.SIZE);
+      typeRegistry.Register(typeof(Quantum.WeaponFireStation), Quantum.WeaponFireStation.SIZE);
+      typeRegistry.Register(typeof(Quantum.WeaponLoaderStation), Quantum.WeaponLoaderStation.SIZE);
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 13)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 17)
         .AddBuiltInComponents()
         .Add<Quantum.Carryable>(Quantum.Carryable.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.Interactable>(Quantum.Interactable.Serialize, null, null, ComponentFlags.None)
@@ -1667,8 +1772,12 @@ namespace Quantum {
         .Add<Quantum.Submarine>(Quantum.Submarine.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.SubmarineInterior>(Quantum.SubmarineInterior.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.TeamLink>(Quantum.TeamLink.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.TelescopeStation>(Quantum.TelescopeStation.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.TerminalStation>(Quantum.TerminalStation.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.ThrustStation>(Quantum.ThrustStation.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.Torpedo>(Quantum.Torpedo.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.WeaponFireStation>(Quantum.WeaponFireStation.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.WeaponLoaderStation>(Quantum.WeaponLoaderStation.Serialize, null, null, ComponentFlags.None)
         .Finish();
     }
     [Preserve()]
