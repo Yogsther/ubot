@@ -20,7 +20,8 @@ namespace Quantum
 			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
 			var transform = f.Unsafe.GetPointer<Transform3D>(playerEntity);
 
-			TeamRef playerTeam = (player % 2) == 0 ? TeamRef.Attacker : TeamRef.Defender;
+
+			TeamRef playerTeam = f.Config.SameTeam ? TeamRef.Attacker : ((player % 2) == 0 ? TeamRef.Attacker : TeamRef.Defender);
 
 			TeamLink teamLink = new TeamLink();
 			teamLink.Team = playerTeam;
@@ -28,8 +29,6 @@ namespace Quantum
 			f.Add(playerEntity, teamLink);
 
 			var spawnPosition = playerTeam == TeamRef.Attacker ? f.Global->AttackerSpawnPoint.Position : f.Global->DefenderSpawnPoint.Position;
-
-			Debug.Log(spawnPosition);
 
 			kcc->Teleport(f, spawnPosition);
 
