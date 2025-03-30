@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5878685237005223745, guid: 209b592a757846b49bdc53f17a19ebbb, type: 3}
+      propertyPath: Prototype.Damage.RawValue
+      value: 3276800
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8431702859018435098, guid: 209b592a757846b49bdc53f17a19ebbb, type: 3}
     - {fileID: 3496779619496736495, guid: 209b592a757846b49bdc53f17a19ebbb, type: 3}

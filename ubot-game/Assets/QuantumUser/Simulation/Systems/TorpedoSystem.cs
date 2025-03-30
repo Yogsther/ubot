@@ -1,25 +1,25 @@
 namespace Quantum
 {
-    using Photon.Deterministic;
-    using UnityEngine.Scripting;
+	using Photon.Deterministic;
+	using UnityEngine.Scripting;
 
-    [Preserve]
-    public unsafe class TorpedoSystem : SystemMainThreadFilter<TorpedoSystem.Filter>, ISignalOnTorpedoFired, ISignalOnCollisionEnter3D
-    {
-		
+	[Preserve]
+	public unsafe class TorpedoSystem : SystemMainThreadFilter<TorpedoSystem.Filter>, ISignalOnTorpedoFired, ISignalOnCollisionEnter3D
+	{
+
 
 		public void OnTorpedoFired(Frame f, TeamRef firingTeam)
 		{
 			var subFilter = f.Filter<Submarine, TeamLink, Transform3D>();
 			Submarine* submarine = null;
-			
+
 			while (subFilter.NextUnsafe(out _, out Submarine* sub, out TeamLink* subTeamLink, out Transform3D* subTransform))
 			{
 				if (subTeamLink->Team == firingTeam)
 				{
 					var subPosition = subTransform->Position + (subTransform->Forward * FP._100);
 					var subDirection = subTransform->Forward;
-					
+
 					SpawnTorpedo(f, subPosition, subDirection, firingTeam);
 				}
 			}
@@ -37,13 +37,13 @@ namespace Quantum
 				return;
 
 			f.Destroy(info.Entity);
-			f.Signals.OnSubmarineDamaged(info.Other);
+			f.Signals.OnSubmarineDamaged(info.Other, torpedo->Damage);
 
 			Log.Debug("Submarine hit!");
 		}
 
 		public override void Update(Frame f, ref Filter filter)
-        {
+		{
 			if (!filter.Torpedo->IsFired)
 			{
 				return;
@@ -70,13 +70,13 @@ namespace Quantum
 			torpedo->IsFired = true;
 		}
 
-        public struct Filter
-        {
-            public EntityRef Entity;
-            public Torpedo* Torpedo;
+		public struct Filter
+		{
+			public EntityRef Entity;
+			public Torpedo* Torpedo;
 			public Transform3D* Transform;
 			public PhysicsBody3D* PhysicsBody;
-			
+
 		}
-    }
+	}
 }

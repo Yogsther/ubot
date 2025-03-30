@@ -1263,25 +1263,30 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Submarine : Quantum.IComponent {
-    public const Int32 SIZE = 56;
+    public const Int32 SIZE = 72;
     public const Int32 ALIGNMENT = 8;
     [FieldOffset(8)]
     [Header("Stats")]
     public FP Acceleration;
-    [FieldOffset(48)]
+    [FieldOffset(64)]
     public FP TurnSpeed;
-    [FieldOffset(16)]
-    [ExcludeFromPrototype()]
-    public FP Steering;
-    [FieldOffset(40)]
-    [ExcludeFromPrototype()]
-    public FP Throttle;
     [FieldOffset(24)]
-    [ExcludeFromPrototype()]
-    public FP TargetDepth;
+    public FP StartHealth;
     [FieldOffset(32)]
     [ExcludeFromPrototype()]
+    public FP Steering;
+    [FieldOffset(56)]
+    [ExcludeFromPrototype()]
+    public FP Throttle;
+    [FieldOffset(40)]
+    [ExcludeFromPrototype()]
+    public FP TargetDepth;
+    [FieldOffset(48)]
+    [ExcludeFromPrototype()]
     public FP TelescopeRotation;
+    [FieldOffset(16)]
+    [ExcludeFromPrototype()]
+    public FP Health;
     [FieldOffset(0)]
     [ExcludeFromPrototype()]
     public QBoolean HasLoadedTorpedo;
@@ -1290,10 +1295,12 @@ namespace Quantum {
         var hash = 19183;
         hash = hash * 31 + Acceleration.GetHashCode();
         hash = hash * 31 + TurnSpeed.GetHashCode();
+        hash = hash * 31 + StartHealth.GetHashCode();
         hash = hash * 31 + Steering.GetHashCode();
         hash = hash * 31 + Throttle.GetHashCode();
         hash = hash * 31 + TargetDepth.GetHashCode();
         hash = hash * 31 + TelescopeRotation.GetHashCode();
+        hash = hash * 31 + Health.GetHashCode();
         hash = hash * 31 + HasLoadedTorpedo.GetHashCode();
         return hash;
       }
@@ -1302,6 +1309,8 @@ namespace Quantum {
         var p = (Submarine*)ptr;
         QBoolean.Serialize(&p->HasLoadedTorpedo, serializer);
         FP.Serialize(&p->Acceleration, serializer);
+        FP.Serialize(&p->Health, serializer);
+        FP.Serialize(&p->StartHealth, serializer);
         FP.Serialize(&p->Steering, serializer);
         FP.Serialize(&p->TargetDepth, serializer);
         FP.Serialize(&p->TelescopeRotation, serializer);
@@ -1413,10 +1422,12 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Torpedo : Quantum.IComponent {
-    public const Int32 SIZE = 24;
+    public const Int32 SIZE = 32;
     public const Int32 ALIGNMENT = 8;
     [FieldOffset(16)]
     public FP Acceleration;
+    [FieldOffset(24)]
+    public FP Damage;
     [FieldOffset(8)]
     public EntityRef LoadedIn;
     [FieldOffset(0)]
@@ -1425,6 +1436,7 @@ namespace Quantum {
       unchecked { 
         var hash = 19727;
         hash = hash * 31 + Acceleration.GetHashCode();
+        hash = hash * 31 + Damage.GetHashCode();
         hash = hash * 31 + LoadedIn.GetHashCode();
         hash = hash * 31 + IsFired.GetHashCode();
         return hash;
@@ -1435,6 +1447,7 @@ namespace Quantum {
         QBoolean.Serialize(&p->IsFired, serializer);
         EntityRef.Serialize(&p->LoadedIn, serializer);
         FP.Serialize(&p->Acceleration, serializer);
+        FP.Serialize(&p->Damage, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]
@@ -1513,7 +1526,7 @@ namespace Quantum {
     void OnTorpedoFired(Frame f, TeamRef firingTeam);
   }
   public unsafe partial interface ISignalOnSubmarineDamaged : ISignal {
-    void OnSubmarineDamaged(Frame f, EntityRef submarineEntity);
+    void OnSubmarineDamaged(Frame f, EntityRef submarineEntity, FP damage);
   }
   public static unsafe partial class Constants {
   }
@@ -1684,12 +1697,12 @@ namespace Quantum {
           }
         }
       }
-      public void OnSubmarineDamaged(EntityRef submarineEntity) {
+      public void OnSubmarineDamaged(EntityRef submarineEntity, FP damage) {
         var array = _f._ISignalOnSubmarineDamagedSystems;
         for (Int32 i = 0; i < array.Length; ++i) {
           var s = array[i];
           if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
-            s.OnSubmarineDamaged(_f, submarineEntity);
+            s.OnSubmarineDamaged(_f, submarineEntity, damage);
           }
         }
       }

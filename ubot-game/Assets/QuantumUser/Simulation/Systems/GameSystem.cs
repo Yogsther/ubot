@@ -49,6 +49,9 @@ namespace Quantum
 
 			f.Add(submarineEntity, teamLink);
 
+			var submarine = f.Unsafe.GetPointer<Submarine>(submarineEntity);
+			submarine->Health = submarine->StartHealth;
+
 			if (f.Unsafe.TryGetPointer(submarineEntity, out Transform3D* transform))
 			{
 				transform->Position = position;

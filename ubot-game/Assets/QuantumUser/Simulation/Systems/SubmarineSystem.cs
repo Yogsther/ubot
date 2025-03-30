@@ -27,9 +27,30 @@ namespace Quantum
 			}
 		}
 
-		public void OnSubmarineDamaged(Frame f, EntityRef submarineEntity)
+		public void OnSubmarineDamaged(Frame f, EntityRef submarineEntity, FP damage)
 		{
 			f.Events.SubmarineDamaged(f.Unsafe.GetPointer<TeamLink>(submarineEntity)->Team);
+			var submarine = f.Unsafe.GetPointer<Submarine>(submarineEntity);
+			submarine->Health -= damage;
+
+			if(submarine->Health <= FP._0)
+			{
+				var team = f.Unsafe.GetPointer<TeamLink>(submarineEntity);
+				var playerFilter = f.Filter<Player, TeamLink, KCC>();
+				var submarineTransform = f.Unsafe.GetPointer<Transform3D>(submarineEntity);
+
+				while (playerFilter.NextUnsafe(out var playerEntity, out Player* player, out TeamLink* teamLink, out KCC* kcc)){
+
+					if (teamLink->Team == team->Team)
+					{
+						kcc->Teleport(f, submarineTransform->Position);
+						kcc->SetGravity(FPVector3.Zero);
+					}
+				}
+
+				f.Destroy(submarineEntity);
+
+			}
 		}
 
 		public override void Update(Frame f, ref Filter filter)

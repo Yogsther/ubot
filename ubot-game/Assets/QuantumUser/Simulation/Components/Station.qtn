@@ -20,6 +20,7 @@ component ThrustStation
 
 component Torpedo{
 	FP Acceleration;
+	FP Damage;
 
 	EntityRef LoadedIn;
     bool IsFired;
