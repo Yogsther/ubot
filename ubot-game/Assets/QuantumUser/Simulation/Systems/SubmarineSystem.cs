@@ -39,12 +39,27 @@ namespace Quantum
 				var playerFilter = f.Filter<Player, TeamLink, KCC>();
 				var submarineTransform = f.Unsafe.GetPointer<Transform3D>(submarineEntity);
 
+				for(int i = 0; i < 4; i++)
+				{
+					var deadPlayerPrototype = f.Config.DeadPlayerPrototype;
+					var deadPlayerEntity = f.Create(deadPlayerPrototype);
+					var deadPlayerTransform = f.Unsafe.GetPointer<Transform3D>(deadPlayerEntity);
+					deadPlayerTransform->Position = submarineTransform->Position;
+					var deadPhysicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(deadPlayerEntity);
+					var randomVector3 = new FPVector3(f.RNG->Next(FP._0, FP._1), f.RNG->Next(FP._0, FP._1), f.RNG->Next(FP._0, FP._1));
+					deadPhysicsBody->AddAngularImpulse(randomVector3 * f.Config.DeathVelocity);
+					deadPhysicsBody->AddForce(randomVector3 * f.Config.DeathVelocity);
+				}
+
 				while (playerFilter.NextUnsafe(out var playerEntity, out Player* player, out TeamLink* teamLink, out KCC* kcc)){
 
 					if (teamLink->Team == team->Team)
 					{
-						kcc->Teleport(f, submarineTransform->Position);
-						kcc->SetGravity(FPVector3.Zero);
+						var deadPlayerPrototype = f.Config.DeadPlayerPrototype;
+						var deadPlayerEntity = f.Create(deadPlayerPrototype);
+						var deadPhysicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(deadPlayerEntity);
+						var randomVector3 = new FPVector3(f.RNG->Next(FP._0, FP._1), f.RNG->Next(FP._0, FP._1), f.RNG->Next(FP._0, FP._1));
+						deadPhysicsBody->AddForce(randomVector3 * f.Config.DeathVelocity);
 					}
 				}
 
