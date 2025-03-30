@@ -1407,6 +1407,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -1746,6 +1748,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -1968,6 +1972,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -2216,6 +2222,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -2626,6 +2634,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -2939,6 +2949,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -3255,6 +3267,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -3768,6 +3782,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -3990,6 +4006,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
@@ -4449,6 +4467,8 @@ MonoBehaviour:
       data:
         Acceleration:
           RawValue: 6553600
+        Damage:
+          RawValue: 0
         LoadedIn:
           SceneIndexPlusOne: 0
         IsFired:
