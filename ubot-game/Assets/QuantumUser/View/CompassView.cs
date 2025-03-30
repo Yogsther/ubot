@@ -6,6 +6,7 @@ namespace Quantum
     {
 
 		[SerializeField] private RectTransform compassNeedle;
+		[SerializeField] private RectTransform compassLegend;
 
 		public override void OnUpdateView()
         {
@@ -22,7 +23,8 @@ namespace Quantum
 			{
 				if (subTeamLink->Team == team)
 				{
-					compassNeedle.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, Mathf.Rad2Deg * subTransform->Rotation.Y.AsFloat));
+					compassLegend.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, -subTransform->Rotation.AsEuler.Y.AsFloat));
+					compassNeedle.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, subTransform->Rotation.AsEuler.Y.AsFloat));
 				}
 			}
 		}
