@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 4929145564883648523}
   - component: {fileID: 7502097400613874558}
   m_Layer: 9
-  m_Name: Camera
+  m_Name: TelescopeCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 3297649831491007137}
   - component: {fileID: 4554208777628171754}
   - component: {fileID: 7158908957540296035}
+  - component: {fileID: 7897668485438740090}
   m_Layer: 9
   m_Name: Submarine
   m_TagString: Untagged
@@ -860,9 +861,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prototype:
     Acceleration:
-      RawValue: 13107200
+      RawValue: 26214400
     TurnSpeed:
       RawValue: 19660800
+--- !u!114 &7897668485438740090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184708634503429008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872f633bbcc379e459b673225ff528f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  telescopeCamera: {fileID: 7502097400613874558}
+  attackerTelescopeViewTexture: {fileID: 8400000, guid: bcb4a306e68c29c4b918aeecc4259f6a, type: 2}
+  defenderTelescopeViewTexture: {fileID: 8400000, guid: bfa926efd43fd414db6639b8bb014364, type: 2}
 --- !u!1 &8803634653163001141
 GameObject:
   m_ObjectHideFlags: 0
