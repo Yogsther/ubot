@@ -7,11 +7,13 @@ component Submarine
     [Header("Stats")]
     FP Acceleration;
     FP TurnSpeed;
+    FP StartHealth;
 
     [ExcludeFromPrototype] FP Steering;
     [ExcludeFromPrototype] FP Throttle;
     [ExcludeFromPrototype] FP TargetDepth;
     [ExcludeFromPrototype] FP TelescopeRotation;
+    [ExcludeFromPrototype] FP Health;
 
     [ExcludeFromPrototype] bool HasLoadedTorpedo;
 }
@@ -21,7 +23,7 @@ component SubmarineInterior
     
 }
 
-signal OnSubmarineDamaged(EntityRef submarineEntity);
+signal OnSubmarineDamaged(EntityRef submarineEntity, FP damage);
 
 event SubmarineDamaged
 {

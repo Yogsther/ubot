@@ -864,6 +864,8 @@ MonoBehaviour:
       RawValue: 26214400
     TurnSpeed:
       RawValue: 19660800
+    StartHealth:
+      RawValue: 655360
 --- !u!114 &7897668485438740090
 MonoBehaviour:
   m_ObjectHideFlags: 0

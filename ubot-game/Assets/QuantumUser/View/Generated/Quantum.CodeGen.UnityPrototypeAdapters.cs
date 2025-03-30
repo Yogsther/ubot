@@ -154,12 +154,14 @@ namespace Quantum.Prototypes.Unity {
   [System.SerializableAttribute()]
   public unsafe partial class TorpedoPrototype : Quantum.QuantumUnityPrototypeAdapter<Quantum.Prototypes.TorpedoPrototype> {
     public FP Acceleration;
+    public FP Damage;
     public Quantum.QuantumEntityPrototype LoadedIn;
     public QBoolean IsFired;
     partial void ConvertUser(Quantum.QuantumEntityPrototypeConverter converter, ref Quantum.Prototypes.TorpedoPrototype prototype);
     public override Quantum.Prototypes.TorpedoPrototype Convert(Quantum.QuantumEntityPrototypeConverter converter) {
       var result = new Quantum.Prototypes.TorpedoPrototype();
       converter.Convert(this.Acceleration, out result.Acceleration);
+      converter.Convert(this.Damage, out result.Damage);
       converter.Convert(this.LoadedIn, out result.LoadedIn);
       converter.Convert(this.IsFired, out result.IsFired);
       ConvertUser(converter, ref result);

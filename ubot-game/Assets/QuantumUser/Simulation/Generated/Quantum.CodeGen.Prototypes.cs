@@ -381,6 +381,7 @@ namespace Quantum.Prototypes {
     [Header("Stats")]
     public FP Acceleration;
     public FP TurnSpeed;
+    public FP StartHealth;
     partial void MaterializeUser(Frame frame, ref Quantum.Submarine result, in PrototypeMaterializationContext context);
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.Submarine component = default;
@@ -390,6 +391,7 @@ namespace Quantum.Prototypes {
     public void Materialize(Frame frame, ref Quantum.Submarine result, in PrototypeMaterializationContext context = default) {
         result.Acceleration = this.Acceleration;
         result.TurnSpeed = this.TurnSpeed;
+        result.StartHealth = this.StartHealth;
         MaterializeUser(frame, ref result, in context);
     }
   }
@@ -480,6 +482,7 @@ namespace Quantum.Prototypes {
   [Quantum.Prototypes.Prototype(typeof(Quantum.Torpedo))]
   public unsafe class TorpedoPrototype : ComponentPrototype<Quantum.Torpedo> {
     public FP Acceleration;
+    public FP Damage;
     public MapEntityId LoadedIn;
     public QBoolean IsFired;
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
@@ -489,6 +492,7 @@ namespace Quantum.Prototypes {
     }
     public void Materialize(Frame frame, ref Quantum.Torpedo result, in PrototypeMaterializationContext context = default) {
         result.Acceleration = this.Acceleration;
+        result.Damage = this.Damage;
         PrototypeValidator.FindMapEntity(this.LoadedIn, in context, out result.LoadedIn);
         result.IsFired = this.IsFired;
     }
