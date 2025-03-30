@@ -23,7 +23,7 @@ MonoBehaviour:
     Id:
       Value: 1345484061008814321
   DeathVelocity:
-    RawValue: 16384000
+    RawValue: 3276800
   InteractableMask:
     BitMask: 64
   PlayerCameraPosition:
