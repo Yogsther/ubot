@@ -18,8 +18,22 @@ component ThrustStation
 	FP ThrottleSpeed;
 }
 
-component TerminalStation{
+component Torpedo{
+	EntityRef LoadedIn;
 }
+
+component TelescopeStation{}
+
+component WeaponLoaderStation {
+	FP LoadingSpeed;
+	FPVector3 WeaponRotation;
+	FPVector3 WeaponPositionFrom;
+	FPVector3 WeaponPositionTo;
+	EntityRef CurrentTorpedo;
+	FP LoadingProgress;
+}
+component WeaponFireStation {}
+component TerminalStation {}
 
 event OnTerminalInput
 {
