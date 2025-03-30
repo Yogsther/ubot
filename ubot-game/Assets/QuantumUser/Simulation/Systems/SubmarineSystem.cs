@@ -43,8 +43,22 @@ namespace Quantum
 			filter.PhysicsBody->AddForce(buoyancyForce);
 			filter.PhysicsBody->AddTorque(steeringTorque);
 		}
-		
-        public struct Filter
+
+		public static EntityRef GetSubmarine(Frame f, TeamRef team)
+		{
+			var submarines = f.Filter<Submarine, TeamLink>();
+			while (submarines.Next(out var entity, out var submarine, out var teamLink))
+			{
+				if (teamLink.Team == team)
+				{
+					return entity;
+				}
+			}
+			return EntityRef.None;
+		}
+
+
+		public struct Filter
         {
             public EntityRef Entity;
             public Transform3D* Transform;
