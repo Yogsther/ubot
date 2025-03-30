@@ -81,8 +81,9 @@ namespace Quantum {
         _f.AddEvent(ev);
         return ev;
       }
-      public EventSubmarineDamaged SubmarineDamaged() {
+      public EventSubmarineDamaged SubmarineDamaged(TeamRef Team) {
         var ev = _f.Context.AcquireEvent<EventSubmarineDamaged>(EventSubmarineDamaged.ID);
+        ev.Team = Team;
         _f.AddEvent(ev);
         return ev;
       }
@@ -144,6 +145,7 @@ namespace Quantum {
   }
   public unsafe partial class EventSubmarineDamaged : EventBase {
     public new const Int32 ID = 3;
+    public TeamRef Team;
     protected EventSubmarineDamaged(Int32 id, EventFlags flags) : 
         base(id, flags) {
     }
@@ -161,6 +163,7 @@ namespace Quantum {
     public override Int32 GetHashCode() {
       unchecked {
         var hash = 47;
+        hash = hash * 31 + Team.GetHashCode();
         return hash;
       }
     }

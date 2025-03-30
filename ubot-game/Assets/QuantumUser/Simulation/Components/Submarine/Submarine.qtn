@@ -20,5 +20,5 @@ component SubmarineInterior
 
 event SubmarineDamaged
 {
-    
+    TeamRef Team;
 }
