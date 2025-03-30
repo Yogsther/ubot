@@ -20,7 +20,7 @@ namespace Quantum
 			var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
 			var transform = f.Unsafe.GetPointer<Transform3D>(playerEntity);
 
-			TeamRef playerTeam = TeamRef.Defender; //f.GetPlayerData(player).Team;
+			TeamRef playerTeam = (f.PlayerCount % 2) == 0 ? TeamRef.Attacker : TeamRef.Defender;
 
 			TeamLink teamLink = new TeamLink();
 			teamLink.Team = playerTeam;
