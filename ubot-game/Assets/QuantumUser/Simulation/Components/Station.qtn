@@ -57,3 +57,9 @@ signal OnPlayerLeaveStation(EntityRef playerEntity);
 
 
 signal OnTorpedoFired(TeamRef firingTeam);
+
+
+event OnTorpedoFired
+{
+	EntityRef submarineEntity;
+}
