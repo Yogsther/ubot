@@ -20,6 +20,8 @@ component SubmarineInterior
     
 }
 
+signal OnSubmarineDamaged(EntityRef submarineEntity);
+
 event SubmarineDamaged
 {
     TeamRef Team;

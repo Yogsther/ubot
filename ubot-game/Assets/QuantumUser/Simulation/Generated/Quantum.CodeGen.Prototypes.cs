@@ -473,14 +473,18 @@ namespace Quantum.Prototypes {
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.Torpedo))]
   public unsafe class TorpedoPrototype : ComponentPrototype<Quantum.Torpedo> {
+    public FP Acceleration;
     public MapEntityId LoadedIn;
+    public QBoolean IsFired;
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
         Quantum.Torpedo component = default;
         Materialize((Frame)f, ref component, in context);
         return f.Set(entity, component) == SetResult.ComponentAdded;
     }
     public void Materialize(Frame frame, ref Quantum.Torpedo result, in PrototypeMaterializationContext context = default) {
+        result.Acceleration = this.Acceleration;
         PrototypeValidator.FindMapEntity(this.LoadedIn, in context, out result.LoadedIn);
+        result.IsFired = this.IsFired;
     }
   }
   [System.SerializableAttribute()]

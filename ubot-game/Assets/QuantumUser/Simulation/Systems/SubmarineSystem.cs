@@ -4,7 +4,7 @@ namespace Quantum
     using UnityEngine.Scripting;
 
     [Preserve]
-    public unsafe class SubmarineSystem : SystemMainThreadFilter<SubmarineSystem.Filter>
+    public unsafe class SubmarineSystem : SystemMainThreadFilter<SubmarineSystem.Filter>, ISignalOnSubmarineDamaged
     {
 
 		public override void OnInit(Frame f)
@@ -25,6 +25,12 @@ namespace Quantum
 					}
 				}
 			}
+		}
+
+		public void OnSubmarineDamaged(Frame f, EntityRef submarineEntity)
+		{
+
+			f.Events.SubmarineDamaged(f.Unsafe.GetPointer<TeamLink>(submarineEntity)->Team);
 		}
 
 		public override void Update(Frame f, ref Filter filter)
