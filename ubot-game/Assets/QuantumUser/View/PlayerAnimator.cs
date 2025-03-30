@@ -1,10 +1,18 @@
 using Photon.Deterministic;
 using Quantum;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAnimator : QuantumEntityViewComponent<SceneContext>
 {
+	public UnityEvent OnFootstep;
+	
+
     [SerializeField] Animator animator;
+
+
+	[SerializeField] private float footstepThreshold = 2.0f;
+	private float footstepValue;
 
 	public override void OnUpdateView()
 	{
@@ -22,6 +30,13 @@ public class PlayerAnimator : QuantumEntityViewComponent<SceneContext>
 		}
 
 		if (player.CurrentStation.IsValid) speed = 0;
+
+		footstepValue += speed;
+		if (footstepValue > footstepThreshold)
+		{
+			footstepValue = 0;
+			OnFootstep.Invoke();
+		}
 
 		animator.SetFloat("Speed", speed);
 		animator.SetBool("Carrying", player.CurrentlyCarrying.IsValid || player.CurrentStation.IsValid);

@@ -33,6 +33,8 @@ namespace Quantum
 			var phyicsBody = f.Unsafe.GetPointer<PhysicsBody3D>(item);
 			phyicsBody->IsKinematic = true;
 			phyicsBody->Velocity = FPVector3.Zero;
+
+			f.Events.OnPickup(item);
 		}
 
 		public void OnDrop(Frame f, EntityRef playerEntity)

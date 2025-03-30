@@ -11,6 +11,10 @@ namespace Quantum
 		public GameObject[] LocalPlayerVisual;
 		public GameObject[] RemotePlayerVisual;
 
+
+		
+
+
 		public override void OnActivate(Frame frame)
 		{
 			Player player = GetPredictedQuantumComponent<Player>();

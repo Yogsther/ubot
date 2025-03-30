@@ -1,17 +1,29 @@
 namespace Quantum
 {
     using UnityEngine;
+	using UnityEngine.Events;
 
-    public unsafe class TorpedoView : QuantumEntityViewComponent
+	public unsafe class TorpedoView : QuantumEntityViewComponent
     {
+		public UnityEvent OnPickupItem;
+
         [SerializeField] private GameObject model;
+
 
 		public override void OnActivate(Frame frame)
 		{
-			if (!frame.Unsafe.TryGetPointer(EntityRef, out Torpedo* torpedo))
-				return;
+			QuantumEvent.Subscribe<EventOnPickup>(this, OnPickup);
+		}
+		
+		public override void OnDeactivate()
+		{
+			QuantumEvent.UnsubscribeListener(this);
+		}
 
-			model.layer = torpedo->IsFired ? 9 : 6;
+
+		private void OnPickup(EventOnPickup e)
+		{
+			OnPickupItem.Invoke();
 		}
 	}
 }

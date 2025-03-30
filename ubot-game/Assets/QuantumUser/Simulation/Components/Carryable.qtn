@@ -6,3 +6,9 @@ component Carryable{
 
 signal OnCarry (EntityRef Item, EntityRef Player);
 signal OnDrop (EntityRef Player);
+
+
+event OnPickup
+{
+	EntityRef ItemEntity;
+}
