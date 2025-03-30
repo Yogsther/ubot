@@ -215,7 +215,7 @@ MonoBehaviour:
         Id:
           Value: 0
       IsTrigger: 0
-      ColliderIndex: 3
+      ColliderIndex: 4
       MutableMode: 0
   - Rotation:
       X:
@@ -259,7 +259,7 @@ MonoBehaviour:
         Id:
           Value: 0
       IsTrigger: 0
-      ColliderIndex: 4
+      ColliderIndex: 5
       MutableMode: 0
   - Rotation:
       X:
@@ -1266,8 +1266,12 @@ MonoBehaviour:
     - rid: 256630783484100614
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 341668664191221760
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -1575,8 +1579,12 @@ MonoBehaviour:
     - rid: 897046867295076358
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 934798236110028800
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -1910,8 +1918,12 @@ MonoBehaviour:
     - rid: 1477538974686773254
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 1843780568412585984
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -2128,8 +2140,12 @@ MonoBehaviour:
     - rid: 1843780568412585990
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 1859299429861818368
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -2372,8 +2388,12 @@ MonoBehaviour:
     - rid: 2557546292683210758
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 2651149996035932160
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -2684,8 +2704,12 @@ MonoBehaviour:
     - rid: 2752546932579631110
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 2866111056206364672
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -2902,8 +2926,12 @@ MonoBehaviour:
     - rid: 2866111056206364678
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 2892167508247183360
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -3214,8 +3242,12 @@ MonoBehaviour:
     - rid: 3331566877653598214
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 3414131563720343552
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -3432,8 +3464,12 @@ MonoBehaviour:
     - rid: 3414131563720343558
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 3555948010137452544
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -3650,8 +3686,12 @@ MonoBehaviour:
     - rid: 3555948010137452550
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 3728297522943229952
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -4053,6 +4093,8 @@ MonoBehaviour:
     - rid: 5230409427164594182
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
     - rid: 5748706641423892480
@@ -4550,8 +4592,12 @@ MonoBehaviour:
     - rid: 6700083118436515846
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 6718195736405606400
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -4768,8 +4814,12 @@ MonoBehaviour:
     - rid: 6718195736405606406
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 6733790045397843968
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -4986,8 +5036,12 @@ MonoBehaviour:
     - rid: 6733790045397843974
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 6765898050524151808
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:
@@ -5204,8 +5258,12 @@ MonoBehaviour:
     - rid: 6765898050524151814
       type: {class: TorpedoPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
+        Acceleration:
+          RawValue: 6553600
         LoadedIn:
           SceneIndexPlusOne: 0
+        IsFired:
+          Value: 0
     - rid: 6771541414212796416
       type: {class: Transform3DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:

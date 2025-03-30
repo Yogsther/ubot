@@ -1413,20 +1413,28 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Torpedo : Quantum.IComponent {
-    public const Int32 SIZE = 8;
+    public const Int32 SIZE = 24;
     public const Int32 ALIGNMENT = 8;
-    [FieldOffset(0)]
+    [FieldOffset(16)]
+    public FP Acceleration;
+    [FieldOffset(8)]
     public EntityRef LoadedIn;
+    [FieldOffset(0)]
+    public QBoolean IsFired;
     public override Int32 GetHashCode() {
       unchecked { 
         var hash = 19727;
+        hash = hash * 31 + Acceleration.GetHashCode();
         hash = hash * 31 + LoadedIn.GetHashCode();
+        hash = hash * 31 + IsFired.GetHashCode();
         return hash;
       }
     }
     public static void Serialize(void* ptr, FrameSerializer serializer) {
         var p = (Torpedo*)ptr;
+        QBoolean.Serialize(&p->IsFired, serializer);
         EntityRef.Serialize(&p->LoadedIn, serializer);
+        FP.Serialize(&p->Acceleration, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]
@@ -1501,6 +1509,12 @@ namespace Quantum {
   public unsafe partial interface ISignalOnPlayerLeaveStation : ISignal {
     void OnPlayerLeaveStation(Frame f, EntityRef playerEntity);
   }
+  public unsafe partial interface ISignalOnTorpedoFired : ISignal {
+    void OnTorpedoFired(Frame f, TeamRef firingTeam);
+  }
+  public unsafe partial interface ISignalOnSubmarineDamaged : ISignal {
+    void OnSubmarineDamaged(Frame f, EntityRef submarineEntity);
+  }
   public static unsafe partial class Constants {
   }
   public unsafe partial class Frame {
@@ -1508,6 +1522,8 @@ namespace Quantum {
     private ISignalOnDrop[] _ISignalOnDropSystems;
     private ISignalOnPlayerEnterStation[] _ISignalOnPlayerEnterStationSystems;
     private ISignalOnPlayerLeaveStation[] _ISignalOnPlayerLeaveStationSystems;
+    private ISignalOnTorpedoFired[] _ISignalOnTorpedoFiredSystems;
+    private ISignalOnSubmarineDamaged[] _ISignalOnSubmarineDamagedSystems;
     partial void AllocGen() {
       _globals = (_globals_*)Context.Allocator.AllocAndClear(sizeof(_globals_));
     }
@@ -1523,6 +1539,8 @@ namespace Quantum {
       _ISignalOnDropSystems = BuildSignalsArray<ISignalOnDrop>();
       _ISignalOnPlayerEnterStationSystems = BuildSignalsArray<ISignalOnPlayerEnterStation>();
       _ISignalOnPlayerLeaveStationSystems = BuildSignalsArray<ISignalOnPlayerLeaveStation>();
+      _ISignalOnTorpedoFiredSystems = BuildSignalsArray<ISignalOnTorpedoFired>();
+      _ISignalOnSubmarineDamagedSystems = BuildSignalsArray<ISignalOnSubmarineDamaged>();
       _ComponentSignalsOnAdded = new ComponentReactiveCallbackInvoker[ComponentTypeId.Type.Length];
       _ComponentSignalsOnRemoved = new ComponentReactiveCallbackInvoker[ComponentTypeId.Type.Length];
       BuildSignalsArrayOnComponentAdded<Quantum.Carryable>();
@@ -1654,6 +1672,24 @@ namespace Quantum {
           var s = array[i];
           if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
             s.OnPlayerLeaveStation(_f, playerEntity);
+          }
+        }
+      }
+      public void OnTorpedoFired(TeamRef firingTeam) {
+        var array = _f._ISignalOnTorpedoFiredSystems;
+        for (Int32 i = 0; i < array.Length; ++i) {
+          var s = array[i];
+          if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
+            s.OnTorpedoFired(_f, firingTeam);
+          }
+        }
+      }
+      public void OnSubmarineDamaged(EntityRef submarineEntity) {
+        var array = _f._ISignalOnSubmarineDamagedSystems;
+        for (Int32 i = 0; i < array.Length; ++i) {
+          var s = array[i];
+          if (_f.SystemIsEnabledInHierarchy((SystemBase)s)) {
+            s.OnSubmarineDamaged(_f, submarineEntity);
           }
         }
       }

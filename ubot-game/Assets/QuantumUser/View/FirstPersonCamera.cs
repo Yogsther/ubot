@@ -1,13 +1,33 @@
 namespace Quantum
 {
+	using System.Collections;
 	using UnityEngine;
+
+
+	
 
 	/// <summary>
 	/// Updates main Camera (first person view) based on look rotation stored in KCC component.
 	/// </summary>
 	public class FirstPersonCamera : QuantumEntityViewComponent<SceneContext>
 	{
+		
+
 		public Transform Handle;
+
+		[SerializeField] private Transform cameraHandleOrigin;
+
+		public override void OnActivate(Frame frame)
+		{
+			QuantumEvent.Subscribe<EventSubmarineDamaged>(this, OnSubmarineDamaged);
+
+			
+		}
+
+		public override void OnDeactivate()
+		{
+			QuantumEvent.UnsubscribeListener(this);
+		}
 
 		public override void OnLateUpdateView()
 		{
@@ -44,5 +64,33 @@ namespace Quantum
 				Camera.main.transform.SetPositionAndRotation(cameraPosition, cameraRotation);
 			}
 		}
+
+		private void OnSubmarineDamaged(EventSubmarineDamaged e)
+		{
+			var playerTeam = GetPredictedQuantumComponent<TeamLink>().Team;
+
+			if (e.Team == playerTeam)
+			{
+				StartCoroutine(CameraShakeRoutine(0.5f, 0.15f));
+			}
+		}
+
+
+		private IEnumerator CameraShakeRoutine(float duration, float magnitude) 
+		{
+			float time = 0.0f;
+
+			while (time < duration)
+			{
+				time += Time.fixedDeltaTime;
+
+				Handle.localPosition = cameraHandleOrigin.localPosition + Random.onUnitSphere * magnitude;
+
+				yield return new WaitForFixedUpdate();
+			}
+
+			Handle.localPosition = cameraHandleOrigin.localPosition;
+		}
+		
 	}
 }

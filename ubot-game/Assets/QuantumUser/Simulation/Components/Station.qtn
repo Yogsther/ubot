@@ -19,7 +19,10 @@ component ThrustStation
 }
 
 component Torpedo{
+	FP Acceleration;
+
 	EntityRef LoadedIn;
+    bool IsFired;
 }
 
 component TelescopeStation{
@@ -51,3 +54,6 @@ event OnTerminalInput
 
 signal OnPlayerEnterStation(EntityRef playerEntity, EntityRef stationEntity);
 signal OnPlayerLeaveStation(EntityRef playerEntity);
+
+
+signal OnTorpedoFired(TeamRef firingTeam);

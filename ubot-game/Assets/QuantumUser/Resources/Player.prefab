@@ -173,6 +173,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4850610684956171900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86564193623822170}
+  m_Layer: 0
+  m_Name: CameraHandleOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86564193623822170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850610684956171900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.262, z: 0.267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9125382537895360933}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5494263560234376091
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +546,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2784763235198929911, guid: 9633c0dc6f5fc1f47aab20da16b597e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2830847532894655873}
+    - targetCorrespondingSourceObject: {fileID: 2784763235198929911, guid: 9633c0dc6f5fc1f47aab20da16b597e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 86564193623822170}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 506928541793919104, guid: 9633c0dc6f5fc1f47aab20da16b597e4, type: 3}
       insertIndex: -1
@@ -572,6 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Handle: {fileID: 2830847532894655873}
+  cameraHandleOrigin: {fileID: 86564193623822170}
 --- !u!114 &971239033283931305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,8 +652,8 @@ MonoBehaviour:
       RawValue: 262144
     PlayerRef:
       _index: 0
-    IsCarrying:
-      Value: 0
+    CurrentlyCarrying: {fileID: 0}
+    CurrentStation: {fileID: 0}
 --- !u!114 &2598372725758198117
 MonoBehaviour:
   m_ObjectHideFlags: 0

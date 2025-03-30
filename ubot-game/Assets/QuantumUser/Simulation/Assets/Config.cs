@@ -9,5 +9,6 @@ namespace Quantum
 		public FPVector3 PlayerCameraPosition;
 		public FP InteractDistance;
 		public AssetRef<EntityPrototype> SubmarinePrototype;
+		public AssetRef<EntityPrototype> TorpedoProjectilePrototype;
 	}
 }
