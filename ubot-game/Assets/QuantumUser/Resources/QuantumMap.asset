@@ -395,6 +395,94 @@ MonoBehaviour:
       MutableMode: 0
   - Rotation:
       X:
+        RawValue: -32768
+      Y:
+        RawValue: 32768
+      Z:
+        RawValue: -32768
+      W:
+        RawValue: 32768
+    Position:
+      X:
+        RawValue: -3805413
+      Y:
+        RawValue: 89128
+      Z:
+        RawValue: -5898
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    ShapeType: 4
+    SphereRadius:
+      RawValue: 0
+    CapsuleRadius:
+      RawValue: 0
+    CapsuleHeight:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: 0
+    SmoothSphereMeshCollisions: 0
+    StaticData:
+      Name: Room
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 8
+      MutableMode: 0
+  - Rotation:
+      X:
+        RawValue: -32768
+      Y:
+        RawValue: 32768
+      Z:
+        RawValue: -32768
+      W:
+        RawValue: 32768
+    Position:
+      X:
+        RawValue: -3805413
+      Y:
+        RawValue: 267386
+      Z:
+        RawValue: -5898
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    ShapeType: 4
+    SphereRadius:
+      RawValue: 0
+    CapsuleRadius:
+      RawValue: 0
+    CapsuleHeight:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: 0
+    SmoothSphereMeshCollisions: 0
+    StaticData:
+      Name: Room (1)
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 9
+      MutableMode: 0
+  - Rotation:
+      X:
         RawValue: 0
       Y:
         RawValue: 46349
@@ -435,7 +523,7 @@ MonoBehaviour:
         Id:
           Value: 0
       IsTrigger: 0
-      ColliderIndex: 8
+      ColliderIndex: 10
       MutableMode: 0
   - Rotation:
       X:
@@ -479,7 +567,95 @@ MonoBehaviour:
         Id:
           Value: 0
       IsTrigger: 0
-      ColliderIndex: 9
+      ColliderIndex: 11
+      MutableMode: 0
+  - Rotation:
+      X:
+        RawValue: -32768
+      Y:
+        RawValue: 32768
+      Z:
+        RawValue: -32768
+      W:
+        RawValue: 32768
+    Position:
+      X:
+        RawValue: 4406247
+      Y:
+        RawValue: 89128
+      Z:
+        RawValue: -5898
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    ShapeType: 4
+    SphereRadius:
+      RawValue: 0
+    CapsuleRadius:
+      RawValue: 0
+    CapsuleHeight:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: 0
+    SmoothSphereMeshCollisions: 0
+    StaticData:
+      Name: Room
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 12
+      MutableMode: 0
+  - Rotation:
+      X:
+        RawValue: -32768
+      Y:
+        RawValue: 32768
+      Z:
+        RawValue: -32768
+      W:
+        RawValue: 32768
+    Position:
+      X:
+        RawValue: 4406247
+      Y:
+        RawValue: 267386
+      Z:
+        RawValue: -5898
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    ShapeType: 4
+    SphereRadius:
+      RawValue: 0
+    CapsuleRadius:
+      RawValue: 0
+    CapsuleHeight:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+      Z:
+        RawValue: 0
+    SmoothSphereMeshCollisions: 0
+    StaticData:
+      Name: Room (1)
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 13
       MutableMode: 0
   MapEntities:
   - Components:
@@ -574,7 +750,7 @@ MonoBehaviour:
     - rid: 341668664191221763
     - rid: 341668664191221764
     - rid: 341668664191221765
-  SerializedTriangleDataUncompressedSize: 49064
+  SerializedTriangleDataUncompressedSize: 438968
   references:
     version: 2
     RefIds:
